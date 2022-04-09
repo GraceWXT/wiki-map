@@ -17,6 +17,7 @@
 
 * Ask Andy and/or mentor about using ElephantSQL instead of local psql
 
-## What's next
-* Check out how Google Maps API works to complete ERD and clarify the endpoint for `GET /pins/:id`
+## What's next (tmr)
+* Check out Google Maps API documentation to complete ERD and clarify the endpoint for `GET /pins/:id`
 * Complete task tree
+* Create wireframes

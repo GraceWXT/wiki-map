@@ -11,7 +11,7 @@
 ## User Stories
 ### Template
 * As a ___, I want to ___, because ___.
-* As a __, I shouldn't be able to _, because ___.
+* As a ___, I shouldn't be able to ___, because ___.
 
 ### User Stories (Anyone)
 * As a user, I want to see a list of available maps others created, because I like to see others' recommendations 

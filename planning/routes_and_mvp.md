@@ -12,7 +12,7 @@
 
 - [ ] B `GET /maps` (homepage)
 - [ ] R `GET /maps/:id` (favourite/selected map)
-- [ ] E `POST /maps/:id` (open/description/name) **
+- [ ] E `POST /maps/:id` (open/description/name) _*optional_
 - [ ] A `POST /maps` (create map)
 - ~~D `DELETE /maps/:id`~~ (not going to demo deleting maps)
 
