@@ -16,7 +16,7 @@
 - [ ] A `POST /maps` (create map)
 - ~~D `DELETE /maps/:id`~~ (not going to demo deleting maps)
 
-- ~~B `GET /map_points`~~ (not need to show all map points at once)
+- ~~B `GET /pins`~~ (not need to show all map points at once)
 - [ ] R `GET /pins/:id` (select one map point/depending on API)
 - [ ] E `POST /pins/:id` (Modify point)
 - [ ] A `POST /pins` (Add point)
