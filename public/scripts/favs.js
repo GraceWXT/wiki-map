@@ -1,7 +1,9 @@
+const express = require('express');
+const router = express.Router();
 //require db
 
-$ (document).ready(function() {
-  $(".fav-icon").on("click", function () {
+module.exports = (db) => {
+  router.post('/', (req, res) => {
     //get ids from website/element
     // (userID)
     const mapID = $(".fav-icon").attr("id")
@@ -13,13 +15,17 @@ $ (document).ready(function() {
     AND user_id = $2`, [mapID, userID]).then(res => {
       favsID =res.rows[0].id
       if (!favsID)  {
-        db.query(`INSERT`, [id, id])
+        db.query(`INSERT INTO favs (map_id, user_id)
+        VALUES ($1, $2)`, [id, id])
           .then(CSS).catch()
       } else {
+        db.query(`DELETE`)
         // delete row where id = favs.id
         // .then(CSS)
       }
     }).catch()
   })
-});
+}
+
+
 
