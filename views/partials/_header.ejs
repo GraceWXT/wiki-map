@@ -7,6 +7,12 @@
     <a class="button user-profile" href="/users/:id">My profile</a>
     <button type="button log-out" class="">Log out</button>
     <% } %>
+    <% } else { %>
+      <div class="navbar-nav">
+        <a class="btn btn-light" href="/login" style="margin-right: 1em;">Login</a>
+        <a class="btn btn-warning" href="/register">Register</a>
+      </div>
+      <% } %>
   </nav>
   <section id="new-map">
     <form action="/maps" method="POST">
