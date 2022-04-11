@@ -3,13 +3,14 @@
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   min-height: 100vh;
   background: $background-color;
-  // font-size: 36px;
+  font-family: $body-font;
 
   & > header {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 
     nav {
       display: flex;
@@ -19,20 +20,38 @@ body {
       height: 8vh;
       width: 100%;
       background: $nav-color;
+
+      #logo {
+        color: white;
+        font-size: 3rem;
+        font-family: $logo-font;
+        margin: 1em;
+      }
+
     }
 
-    #new-map {
+    #new-map > form {
       display: flex;
+      flex-direction: row;
+      justify-content: center;
       align-items: center;
       background: $new-map;
+
+      & > * {
+        margin: 0.5em;
+      }
+
+      input {
+        width: 25vw;
+      }
     }
   }
 
-  div {
+  & > div {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    // width: 100%;
+    width: 100%;
 
     section {
       margin: 2.5vh;
@@ -45,7 +64,7 @@ body {
         justify-content: center;
         border: solid red 1px;
         span {
-          font-size: 2rem;
+          font-size: 1.5rem;
           margin: 1rem;
         }
       }
