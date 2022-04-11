@@ -6,6 +6,7 @@ body {
   min-height: 100vh;
   background: $background-color;
   font-family: $body-font;
+  font-size: 1.8rem;
 
   & > header {
     width: 100%;
@@ -25,7 +26,14 @@ body {
         color: white;
         font-size: 3rem;
         font-family: $logo-font;
-        margin: 1em;
+        margin: 1rem;
+      }
+
+      .button {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
       }
 
     }
@@ -38,11 +46,15 @@ body {
       background: $new-map;
 
       & > * {
-        margin: 0.5em;
+        margin: 1rem;
       }
 
       input {
         width: 25vw;
+      }
+
+      button {
+        background-color: #efad41;
       }
     }
   }
@@ -53,18 +65,24 @@ body {
     justify-content: center;
     width: 100%;
 
+    #map-container {
+      min-height: 85vh;
+      min-width: 85vh;
+      line-height:85vh;
+    }
+
     section {
       margin: 2.5vh;
       border: solid navy 1px;
 
       header {
         width: 60vh;
-        max-width: 60vh;
+        min-width: 45vh;
         display: flex;
         justify-content: center;
         border: solid red 1px;
         span {
-          font-size: 1.5rem;
+          font-size: 2rem;
           margin: 1rem;
         }
       }
@@ -74,17 +92,26 @@ body {
         flex-direction: column;
 
         li {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          & > * {
+            margin: 1rem;
+          }
+
+          .fav-button {
+            background: none;
+            padding: 0px;
+            border: none;
+          }
+
+          .fav-icon {
+            color: $nav-color;
+          }
         }
       }
     }
   }
 
-  #map-container {
-    height: 85vh;
-    width: 85vh;
-    line-height:85vh;
-  }
 }
