@@ -17,11 +17,16 @@ module.exports = (db) => {
       if (!favsID)  {
         db.query(`INSERT INTO favs (map_id, user_id)
         VALUES ($1, $2)`, [id, id])
-          .then(CSS).catch()
+          .then(CSS) {
+            $('.fav-icon').addClass("liked")
+          }.catch()
       } else {
-        db.query(`DELETE`)
+        db.query(`DELETE FROM favs
+        WHERE favs.id = favsID`)
         // delete row where id = favs.id
-        // .then(CSS)
+        .then(CSS) {
+          $('.fav-icon').removeClass("liked")
+        }
       }
     }).catch()
   })
