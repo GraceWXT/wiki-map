@@ -6,16 +6,66 @@ body {
   align-items: center;
   min-height: 100vh;
   background: $background-color;
-  header {
+  // font-size: 36px;
+
+  & > header {
     width: 100%;
-    justify-content: center;
+
     nav {
       display: flex;
       flex-direction: row;
-      height: 5rem;
+      justify-content: space-between;
+      align-items: center;
+      height: 8vh;
       width: 100%;
       background: $nav-color;
     }
+
+    #new-map {
+      display: flex;
+      align-items: center;
+      background: $new-map;
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    // width: 100%;
+
+    section {
+      margin: 2.5vh;
+      border: solid navy 1px;
+
+      header {
+        width: 60vh;
+        max-width: 60vh;
+        display: flex;
+        justify-content: center;
+        border: solid red 1px;
+        span {
+          font-size: 2rem;
+          margin: 1rem;
+        }
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+
+        li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        }
+      }
+    }
+  }
+
+  #map-container {
+    height: 85vh;
+    width: 85vh;
+    line-height:85vh;
   }
 }
-

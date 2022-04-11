@@ -1,26 +1,35 @@
 <header>
   <nav class="navbar">
-    <a  href="/maps">Wiki Map</a>
-    <% if (true) { %>
-    <span class="align-middle" style="margin-right: 1em">Hi! user.name</span>
-    <button class="button new-map">Create New Map</button>
-    <a class="button user-profile" href="/users/:id">My profile</a>
-    <button type="button log-out" class="">Log out</button>
-    <% } %>
+
+    <div>
+      <a  href="/maps">Wiki Map</a>
+      <% if (true) { %>
+      <span class="align-middle" style="margin-right: 1em">Hi! user.name</span>
+    </div>
+
+    <div>
+      <button class="button new-map">Create New Map</button>
+      <a class="button user-profile" href="/users/:id">My profile</a>
+      <button type="button log-out" class="">Log out</button>
+    </div>
+
     <% } else { %>
+    </div>
       <div class="navbar-nav">
-        <a class="btn btn-light" href="/login" style="margin-right: 1em;">Login</a>
-        <a class="btn btn-warning" href="/register">Register</a>
+        <button type="button log-in" class="">Login</button>
+        <button type="button Register" class="">Register</button>
+        <!-- <a class="btn btn-light" href="/login" style="margin-right: 1em;">Login</a>
+        <a class="btn btn-warning" href="/register">Register</a> -->
       </div>
-      <% } %>
+    <% } %>
   </nav>
   <section id="new-map">
     <form action="/maps" method="POST">
       <label>
         submit new map
       </label>
-      <input placeholder="map name" >
-      <button>submit</button>
+      <input placeholder="map name" name="map-name" >
+      <button type="submit">submit</button>
     </form>
   </section>
 </header>
