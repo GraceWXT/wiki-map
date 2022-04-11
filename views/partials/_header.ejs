@@ -1,0 +1,35 @@
+<header>
+  <nav class="navbar">
+
+    <div>
+      <a  id="logo" href="/maps">Wiki Map</a>
+      <% if (user) { %>
+      <span class="align-middle" style="margin-right: 1em">Welcome! <%= user.name %></span>
+    </div>
+
+    <div>
+      <button class="button new-map">Create New Map</button>
+      <a class="button user-profile" href="/users/:id">My Profile</a>
+      <button class="button log-out">Log Out</button>
+    </div>
+
+    <% } else { %>
+    </div>
+      <div>
+        <button type="button log-in" class="">Login</button>
+        <button type="button Register" class="">Register</button>
+        <!-- <a class="btn btn-light" href="/login" style="margin-right: 1em;">Login</a>
+        <a class="btn btn-warning" href="/register">Register</a> -->
+      </div>
+    <% } %>
+  </nav>
+  <section id="new-map">
+    <form action="/maps" method="POST">
+      <label>
+        Submit a descriptive name for your new map:
+      </label>
+      <input placeholder="map name" name="map-name" >
+      <button type="submit">submit</button>
+    </form>
+  </section>
+</header>
