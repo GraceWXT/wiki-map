@@ -1,40 +1,45 @@
 // requre express & setup router
 const express = require('express');
+const initializeMap = require('./mapAPI/initialMapAPI');
 const router  = express.Router();
+const { getMapList, getUserByID } = require('../db/queries');
 
-// declare function --> does 'db' need to be passed in?
 const getMaps = function(db) {
 
   // express router trims '/maps'
   router.get("/", (req,res) => {
 
-    // want only column 'name' from 'maps' & have to return this out of router.get
-    return db.query(`
-    SELECT name
-    FROM maps
-    ORDER BY // order by id descending (newest at top)
-    `)
+  // const promise1 = getMapList(db);
+  const promise2 = getUserByID(db);
 
-    // clean up object that was returned --> .rows should return array of map names
-    .then((result) => {
-      const maps = result.rows;
-      res.json({ users });
-    })
+  Promise.all([promise2]).then((values) => {
 
+    // const mapList = values[0];
+    const user = values[0];
+    const map = initializeMap(); // api call map
+    return res.render("index", { user, map })
+  }).catch((err) => {
     // catch error if any and console log
-    .catch((err) => {
-      console.log(err.message);
-    });
+    console.log(err.message);
   });
 
-  // return from function getMaps
+  });
+
+  // return the router
   return router;
 };
 
+module.exports = getMaps;
 
 
 
+// const promise1 = Promise.resolve(3);
+// const promise2 = 42;
+// const promise3 = new Promise((resolve, reject) => {
+//   setTimeout(resolve, 100, 'foo');
+// });
 
-
-// export getMaps
-module.exports = {getMaps}
+// Promise.all([promise1, promise2, promise3]).then((values) => {
+//   console.log(values);
+// });
+// // expected output: Array [3, 42, "foo"]
