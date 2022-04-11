@@ -33,7 +33,7 @@
 
 # 2022-04-11 Project Planning Meeting
 ## Agenda Items
-
 - [ ] continue with task tree items as assigned
 - [ ] figure out git pull error
+- [ ] group review of list items && targeting attribute id (1pm)
 - [ ] 
