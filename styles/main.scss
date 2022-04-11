@@ -54,7 +54,7 @@ body {
       }
 
       button {
-        background-color: #efad41;
+        background-color: $submit;
       }
     }
   }
@@ -88,16 +88,20 @@ body {
       }
 
       ul {
-        display: flex;
         flex-direction: column;
 
         li {
-          display: flex;
-          flex-direction: row;
+          display: list-item;
           align-items: center;
+          list-style-type: disc;
+          list-style-position: inside;
 
           & > * {
             margin: 1rem;
+          }
+
+          form {
+            display: inline-flex;
           }
 
           .fav-button {
@@ -108,6 +112,10 @@ body {
 
           .fav-icon {
             color: $nav-color;
+          }
+
+          .fav-icon.liked {
+            color: $submit;
           }
         }
       }
