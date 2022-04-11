@@ -9,32 +9,41 @@ module.exports = (db) => {
     // (userID)
     const mapID = $(".fav-icon").attr("id")
     const userID = req.cookies["user_id"]
-    // a function todetermine whether the fav exists
+
+
     db.query(`SELECT favs.id
     FROM favs
     WHERE map_id = $1
     AND user_id = $2`, [mapID, userID])
-      .then(res => {
-        favsID =res.rows[0].id
-        if (!favsID)  {
-          // add new row to favs table with info from browser if ID DOES NOT already exist
+
+      // a function todetermine whether the fav exists
+
+    .then(res => {
+      favsID = res.rows[0].id
+      if (!favsID) {
+
+        // add new row to favs table with info from browser if ID DOES NOT already exist
+
         db.query(`INSERT INTO favs (map_id, user_id)
         VALUES ($1, $2)`, [mapID, userID])
-          .then(() => {
-            $('.fav-icon').addClass("liked");
-          })
-          .catch(err => {
-            res.status(400).json({error: 'invalid request'})
-          })
-      } else {
-         // delete row where id = favs.id if ID DOES already exist
+        .then(() => {
+          $('.fav-icon').addClass("liked");
+        })
+        .catch(err => {
+          res.status(400).json({ error: 'invalid request' })
+        })
+
+        } else {
+
+          // delete row where id = favs.id if ID DOES already exist
+
         db.query(`DELETE FROM favs
         WHERE favs.id = favsID`)
         .then(() => {
           $('.fav-icon').removeClass("liked")
         })
         .catch(err => {
-          res.status(400).json({error: 'invalid request'})
+          res.status(400).json({ error: 'invalid request' })
         })
       }
     })
