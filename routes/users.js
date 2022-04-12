@@ -7,47 +7,44 @@
 
 const express = require('express');
 const router  = express.Router();
-const { getUserByID, getMapList, getFavsMapIDByUserID } = require('../db/queries');
+const { getUserByID, getMapListByUserID, getFavsByUserID } = require('../db/queries');
 
-module.exports = (db) => {
-  router.get("/users/:id", (req, res) => {
+
+const profileRouter = (db) => {
+  router.get("/:id", (req, res) => {
     const id = Number.parseInt(req.cookies["user_id"]);
     getUserByID(db, id)
       .then((user)  => {
         res.render("iaan file name", { user });
       })
       .catch((err) => {
-        console.log("getUser error:", err.message)
+        console.log("get/users/:id error:", err.message);
       })
    });
+
+  router.get("/myMapList", (req, res) => {
+    const id = Number.parseInt(req.cookies["user_id"]);
+    getMapListByUserID(db, id)
+    .then((myMapList) => {
+      res.json(myMapList);
+    })
+    .catch((err) => {
+      console.log("get/myMapList error:", err.message)
+    })
+  });
+
+  router.get("/myFavMaps", (req, res) => {
+    const id = Number.parseInt(req.cookies["user_id"]);
+    getFavsByUserID(db, id)
+    .then((favMaps) => {
+      res.json(favMaps);
+    })
+    .catch((err) => {
+      console.log("get/myFavMaps error:", err.message);
+    })
+  });
   return router;
 };
 
-const id = Number.parseInt(req.cookies["user_id"]);
-    console.log("cookie is", typeof id);
-    getUserByID(db, id)
-      .then((user) => {
-        console.log("user object:", user);
-        res.render("index", { user });
-      })
-      .catch((err) => {
-        // catch error if any and console log
-        console.log("getMaps Error", err.message);
-      });
+module.exports = profileRouter;
 
-
-      const getUserByID = function(db, id) {
-        return db.query(`
-        SELECT *
-        FROM users
-        WHERE id = ${id};
-        `)
-          .then((result) => {
-            console.log("user result", result.rows[0]);
-            const user = result.rows[0];
-            return user;
-          })
-          .catch((err) => {
-            console.log("get user by id error:", err.message);
-          });
-      };
