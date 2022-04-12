@@ -52,6 +52,9 @@ app.use("/maps", getMaps(db));
 const loginRouter = require("./routes/login")
 app.use("/login", loginRouter);
 
+const favRouter = require("./routes/favs");
+app.use("/favs", favRouter(db))
+
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
