@@ -8,11 +8,11 @@ const getMaps = function(db) {
   // express router trims '/maps'
   router.get("/", (req,res) => {
     const id = Number.parseInt(req.cookies["user_id"]);
-    console.log("cookie is", typeof id);
+    // console.log("cookie is", typeof id);
 
     getUserByID(db, id)
       .then((user) => {
-        console.log("user object:", user);
+        // console.log("user object:", user);
         res.render("index", { user });
       })
       .catch((err) => {

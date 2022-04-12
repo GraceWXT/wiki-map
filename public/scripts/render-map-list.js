@@ -1,3 +1,21 @@
+const dbParams = require("../../lib/db");
+const { getMapList } = require('../db/queries');
+
+// use document.ready to wait for page to load before loading map list
+$(document).ready(function() {
+  loadMapList();
+});
+
+console.log("weeeeeee");
+
+// tweeter used AJAX for load___List to call render function, should we do that here?
+const loadMapList = function() {
+  const maps = getMapList(db)
+  .then(function(maps) {
+    renderMapList(maps);
+  });
+};
+
 // function takes 'maps' object and renders into html using 'create map list element' function
 const renderMapList = function(maps) {
 
@@ -9,8 +27,9 @@ const renderMapList = function(maps) {
   container.empty();
 
   // add header to map list
-  const listHeader = "Available Maps";
-  container.prepend(`<span id="list-header">${listHeader}</span>`);
+  // const listHeader = "Available Maps";
+  // container.prepend(`<span id="list-header">${listHeader}</span>`);
+  $("#list-header").text("Available Maps");
 
   // loop through for n list items to create html from function createMapListElement
   for (let i = 0; i < numberOfMaps; i++) {
@@ -18,7 +37,6 @@ const renderMapList = function(maps) {
     container.prepend($mapListItem);
   }
 };
-
 
 
 // function takes individual map objects and uses to create map list html
