@@ -1,7 +1,25 @@
-// make functions for each db query
+/** A function that makes a query to the provided database and returns the user object with matching id */
+const getUserByID = function(db, id) {
 
+  return db.query(`
+  SELECT *
+  FROM users
+  WHERE id = ${id}
+  `)
+  .then((result) => {
+    console.log("user result", result.rows[0]);
+    const user = result.rows[0];
+    return user;
+  })
+  .catch((err)=> {
+    console.log("get user by id error:", err.messsage)
+  })
+};
+
+
+/** */
 const getMapList = function(db) {
-  db.query(`
+  return db.query(`
   SELECT name
   FROM maps
   ORDER BY id DESC;
@@ -16,24 +34,5 @@ const getMapList = function(db) {
   })
 };
 
-
-const getUserByID = function(db) {
-  // get the user_id from cookie => req.cookies[user_id]
-  // const user (obj) = query result row[0] from database
-
-  db.query(`
-  SELECT *
-  FROM users
-  WHERE users.id = $1
-  `, [id])
-  .then((result) => {
-    console.log(result.rows[0])
-    const user = result.rows[0];
-    return user;
-  })
-  .catch((err)=> {
-    console.log(err.messsage)
-  })
-};
 
 module.exports = { getMapList, getUserByID };
