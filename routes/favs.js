@@ -13,14 +13,19 @@ const favRouter = (db) => {
     getFav(db, mapID, userID)
       .then ((fav) => {
           if (!fav) {
-          // add new row to favs table with info from browser if ID DOES NOT already exist
-          insertFav(db, mapID, userID);
+            // add new row to favs table with info from browser if ID DOES NOT already exist
+            insertFav(db, mapID, userID);
           } else {
             // delete row where id = favs.id if ID DOES already exist
             deleteFav(db, fav.id, mapID);
-        }
+          }
+          res.redirect("/maps");
       })
-    })
+      .catch((err) => {
+        console.log("getFav (insert or delete) error: ", err.message);
+      })
+  })
+
   return router;
 }
 

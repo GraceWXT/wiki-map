@@ -6,7 +6,7 @@ const createMapListItem = function(map, favList) {
       $favIcon.addClass("liked");
     }
   }
-  console.log($favIcon.attr("class"));
+  // console.log($favIcon.attr("class"));
 
   const $button = $("<button>").attr("type", "submit").addClass("fav-button").append($favIcon);
   const $form = $("<form>").attr("action", `/favs/${map.id}`).attr("method", "POST").append($button);
@@ -30,8 +30,7 @@ const loadMapList = function() {
   // empty existing containers
   $("#list-header").empty();
   $("#list-container").empty();
-  // add header to map list
-  $("#list-header").text("Available Maps");
+  $("#list-header").text("Available Maps"); // add header to map list
   $.ajax("/maps/maplist")
   .then((values) => {
     const mapList = values[0];  // array of maps object (id, name)
