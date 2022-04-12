@@ -24,9 +24,9 @@ const renderFavList = function(favMaps) {
 
 const favList = function() {
   // empty existing containers
-  $("#list-header").empty();
-  $("#list-container").empty();
-  $("#list-header").text("Favorited Maps"); // add header to fav list
+  $(".favorited-maps-list #list-header").empty();
+  $(".favorited-maps-list #list-container").empty();
+  $(".favorited-maps-list #list-header").text("Favorited Maps"); // add header to fav list
   $.ajax("/users/myFavMaps")
   .then((favMaps) => {
     console.log("favMaps", favMaps);

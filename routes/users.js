@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const { getUserByID, getMapListByUserID, getFavsByUserID } = require('../db/queries');
+const { getUserByID, getMapListByUserID, getFavsByUserID, getFavsMapIDByUserID } = require('../db/queries');
 
 
 const profileRouter = (db) => {
@@ -24,9 +24,11 @@ const profileRouter = (db) => {
 
   router.get("/myMapList", (req, res) => {
     const id = Number.parseInt(req.cookies["user_id"]);
-    getMapListByUserID(db, id)
-    .then((myMapList) => {
-      res.json(myMapList);
+    const myMapListPromise = getMapListByUserID(db, id);
+    const myFavPromise = getFavsMapIDByUserID(db, id);
+    Promise.all([myMapListPromise, myFavPromise])
+    .then((values) => {
+      res.json(values);
     })
     .catch((err) => {
       console.log("get/myMapList error:", err.message)
