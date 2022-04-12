@@ -60,7 +60,7 @@ app.use("/favs", favRouter(db))
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.send("Wrong route.");
 });
 
 app.listen(PORT, () => {

@@ -1,43 +1,63 @@
-// function takes 'maps' object and renders into html using 'create map element' function
-const renderMap = function(tweets) {
-  const numberOfTweets = tweets.length;
-  const container = $('#tweets-container');
+const dbParams = require("../../lib/db");
+const { getMapList } = require('../db/queries');
+
+// use document.ready to wait for page to load before loading map list
+$(document).ready(function() {
+  loadMapList();
+});
+
+console.log("weeeeeee");
+
+// tweeter used AJAX for load___List to call render function, should we do that here?
+const loadMapList = function() {
+  const maps = getMapList(db)
+  .then(function(maps) {
+    renderMapList(maps);
+  });
+};
+
+// function takes 'maps' object and renders into html using 'create map list element' function
+const renderMapList = function(maps) {
+
+  // get count of maps to add to list
+  const numberOfMaps = maps.length;
+  const container = $('#map-container');
+
+  // empty existing container
   container.empty();
-  for (let i = 0; i < numberOfTweets; i++) {
-    const $tweet = createTweetElement(tweets[i]);
-    container.prepend($tweet);
+
+  // add header to map list
+  // const listHeader = "Available Maps";
+  // container.prepend(`<span id="list-header">${listHeader}</span>`);
+  $("#list-header").text("Available Maps");
+
+  // loop through for n list items to create html from function createMapListElement
+  for (let i = 0; i < numberOfMaps; i++) {
+    const $mapListItem = createMapListElement(maps[i]);
+    container.prepend($mapListItem);
   }
 };
 
 
-// FUNCTION TO TAKE SINGLE TWEET DATA AND RENDER INTO HTML AND THEN RETURN
-const createTweetElement = function(tweet) {
-  const tweetDateUnix = tweet.created_at;
-  const $daysSinceTweet = timeago.format(tweetDateUnix);
-  const $tweet = $(
-    `<article>
-          <header>
-            <div class="userName">
-            <img src="${escape(tweet.user.avatars)}">
-            <a>${escape(tweet.user.name)}</a>
-            </div>
-            <div class="userHandle">
-              <a>${escape(tweet.user.handle)}</a>
-            </div>
-          </header>
-          <div class="tweet">
-            <p>${escape(tweet.content.text)}</p>
-          </div>
-          <footer>
-            <p>${escape($daysSinceTweet)}</p>
-            <div class="retweetButtons">
-              <i class="fa-solid fa-flag"></i>
-              <i class="fa-solid fa-retweet"></i>
-              <i class="fa-solid fa-heart"></i>
-            </div>
-          </footer>
-        </article>`
+// function takes individual map objects and uses to create map list html
+const createMapListElement = function(mapElement) {
+
+  // assign map_id and map_name to convenience variables
+  const map_id = mapElement.id;
+  const map_name = mapElement.name;
+
+  // create html using convenience variables
+  const $mapListElement = $(
+    `<li>
+      <span>${map_name}</span>
+      <form action="/favs/${map_id}" method="POST">
+        <button type="submit" class="fav-button">
+          <i class="fa-solid fa-heart fav-icon" id="${map_id}"></i>
+        </button>
+      </form>
+    </li>`
   );
 
-  return $tweet;
+  // return html
+  return $mapListElement;
 };

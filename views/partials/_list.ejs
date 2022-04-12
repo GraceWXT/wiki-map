@@ -1,8 +1,9 @@
 <section>
-  <header><span>List of Maps</span></header>
+  <header><span id="list-header">${list-header}</span></header>
   <ul>
     <!-- Test <li> to build the structure and test css rules -->
     <li>
+
       <span>Best Brunch Spots in New York</span>
       <form action="/favs/1" method="POST">
         <button type="submit" class="fav-button">
@@ -11,10 +12,10 @@
       </form>
     </li>
     <li>
-      <span>Bad-Guy Locations</span>
+      <span>${Bad-Guy Locations}</span>
       <form action="/favs/${map_id}" method="POST">
         <button type="submit" class="fav-button">
-          <i class="fa-solid fa-heart fav-icon" id=${map_id}"></i>
+          <i class="fa-solid fa-heart fav-icon" id="${map_id}"></i>
         </button>
       </form>
     </li>
