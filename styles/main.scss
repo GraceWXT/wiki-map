@@ -3,19 +3,126 @@
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   min-height: 100vh;
   background: $background-color;
-  header {
+  font-family: $body-font;
+  font-size: 1.8rem;
+
+  & > header {
     width: 100%;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
     nav {
       display: flex;
       flex-direction: row;
-      height: 5rem;
+      justify-content: space-between;
+      align-items: center;
+      height: 8vh;
       width: 100%;
       background: $nav-color;
+
+      #logo {
+        color: white;
+        font-size: 3rem;
+        font-family: $logo-font;
+        margin: 1rem;
+      }
+
+      .button {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+
+    }
+
+    #new-map > form {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background: $new-map;
+
+      & > * {
+        margin: 1rem;
+      }
+
+      input {
+        width: 25vw;
+      }
+
+      button {
+        background-color: $submit;
+      }
     }
   }
-}
 
+  & > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+
+    #map-container {
+
+      margin: 2.5vh;
+      height: 85vh;
+      width: 85vh;
+
+    }
+
+    section {
+      height: 85vh;
+      margin: 2.5vh;
+      border: solid navy 1px;
+
+      header {
+        width: 60vh;
+        min-width: 45vh;
+        display: flex;
+        justify-content: center;
+        border: solid red 1px;
+        span {
+          font-size: 2rem;
+          margin: 1rem;
+        }
+      }
+
+      ul {
+        flex-direction: column;
+
+        li {
+          display: list-item;
+          align-items: center;
+          list-style-type: disc;
+          list-style-position: inside;
+
+          & > * {
+            margin: 1rem;
+          }
+
+          form {
+            display: inline-flex;
+          }
+
+          .fav-button {
+            background: none;
+            padding: 0px;
+            border: none;
+          }
+
+          .fav-icon {
+            color: $nav-color;
+          }
+
+          .fav-icon.liked {
+            color: $submit;
+          }
+        }
+      }
+    }
+  }
+
+}
