@@ -100,23 +100,23 @@ const getFavsByUserID = (db, id) => {
 };
 
 
-/** a function to create new fav given an user id and map id */
-
+/** a function to create new fav given a user id and map id */
 const insertFav = (db, mapID, userID) => {
   return db.query(`
   INSERT INTO favs (map_id, user_id)
-  VALUES ($1, $2)`, [mapID, userID])
-    .then(() => {
+  VALUES ($1, $2)
+  RETURNING *`, [mapID, userID])
+    .then((newFav) => {
       // $(`#${mapID}`).addClass("liked");
-      console.log("fav inserted");
+      console.log("newFav inserted", newFav);
     })
     .catch((err) => {
       console.log("insertFav error:", err.message);
     });
 };
 
-/** a function to delete the fav given an user id and map id */
-const deleteFav = (db, favID, mapID) => {
+/** a function to delete the fav given the fav id */
+const deleteFav = (db, favID) => {
   return db.query(`
   DELETE FROM favs
   WHERE favs.id = $1`, [favID])
