@@ -7,19 +7,47 @@
 
 const express = require('express');
 const router  = express.Router();
+const { getUserByID, getMapList, getFavsMapIDByUserID } = require('../db/queries');
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
+  router.get("/users/:id", (req, res) => {
+    const id = Number.parseInt(req.cookies["user_id"]);
+    getUserByID(db, id)
+      .then((user)  => {
+        res.render("iaan file name", { user });
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
+      .catch((err) => {
+        console.log("getUser error:", err.message)
+      })
+   });
   return router;
 };
+
+const id = Number.parseInt(req.cookies["user_id"]);
+    console.log("cookie is", typeof id);
+    getUserByID(db, id)
+      .then((user) => {
+        console.log("user object:", user);
+        res.render("index", { user });
+      })
+      .catch((err) => {
+        // catch error if any and console log
+        console.log("getMaps Error", err.message);
+      });
+
+
+      const getUserByID = function(db, id) {
+        return db.query(`
+        SELECT *
+        FROM users
+        WHERE id = ${id};
+        `)
+          .then((result) => {
+            console.log("user result", result.rows[0]);
+            const user = result.rows[0];
+            return user;
+          })
+          .catch((err) => {
+            console.log("get user by id error:", err.message);
+          });
+      };
