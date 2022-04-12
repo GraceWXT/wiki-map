@@ -57,7 +57,8 @@ app.use("/login", loginRouter);
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.send("Wrong route.");
+  // res.send("Wrong route.");
+  res.render("profile");
 });
 
 app.listen(PORT, () => {
