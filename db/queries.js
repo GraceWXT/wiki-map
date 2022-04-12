@@ -16,10 +16,10 @@ const getUserByID = function(db, id) {
 };
 
 
-/** */
+/** A function that returns an array of maps object with its id and name */
 const getMapList = function(db) {
   return db.query(`
-  SELECT name
+  SELECT id, name
   FROM maps
   ORDER BY id DESC;
   `)
@@ -33,6 +33,7 @@ const getMapList = function(db) {
     });
 };
 
+
 /** Given a map id and user id, return the fav id if existing  */
 const getFav = (db, mapID, userID) => {
   return db.query(`
@@ -45,11 +46,24 @@ const getFav = (db, mapID, userID) => {
       return fav;
     })
     .catch((err) => {
-      console.log("getFavID error:", err.message);
+      console.log("getFav error:", err.message);
     });
 };
 
-
+/** Get a list of all favs */
+const getFavsMapIDByUserID = (db, id) => {
+  return db.query(`
+  SELECT map_id FROM favs
+  WHERE user_id = ${id}
+  ORDER BY id`)
+    .then(res => {
+      const favs = res.rows;
+      return favs;
+    })
+    .catch((err) => {
+      console.log("getFavsMapIDByUserID error:", err.message);
+    });
+}
 
 /** a function to create new fav given an user id and map id */
 
@@ -79,4 +93,4 @@ const deleteFav = (db, favID, mapID) => {
       console.log("deleteFav error:", err.message);
     });
 };
-module.exports = { getMapList, getUserByID, getFav, insertFav, deleteFav };
+module.exports = { getMapList, getUserByID, getFav, getFavsMapIDByUserID, insertFav, deleteFav };
