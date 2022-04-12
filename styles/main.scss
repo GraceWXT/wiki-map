@@ -66,12 +66,13 @@ body {
     width: 100%;
 
     #map-container {
-      min-height: 85vh;
-      min-width: 85vh;
-      line-height:85vh;
+      margin: 2.5vh;
+      height: 85vh;
+      width: 85vh;
     }
 
     section {
+      height: 85vh;
       margin: 2.5vh;
       border: solid navy 1px;
 
