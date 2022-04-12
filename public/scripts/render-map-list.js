@@ -1,63 +1,50 @@
-const dbParams = require("../../lib/db");
-const { getMapList } = require('../db/queries');
+// function takes individual map objects and uses to create map list html
+const createMapListItem = function(map, favList) {
+  let $favIcon = $(`<i class="fa-solid fa-heart fav-icon"></i>`)
+  for (const fav of favList) {
+    if (fav.map_id === map.id) {
+      $favIcon.addClass("liked");
+    }
+  }
+  console.log($favIcon.attr("class"));
+
+  const $button = $("<button>").attr("type", "submit").addClass("fav-button").append($favIcon);
+  const $form = $("<form>").attr("action", `/favs/${map.id}`).attr("method", "POST").append($button);
+  const $listItem = $("<li>").append(`<a href="/maps/${map.id}">${map.name}</a>`).append($form);
+
+  console.log("maplistItem inside create function", $listItem);
+  return $listItem;
+};
+
+// function takes 'maps' object and renders into html using 'create map list element' function
+const renderMapList = function(mapList, favList) {
+  console.log("does it get to render function?")
+  for (const mapObj of mapList) {
+    const $mapListItem = createMapListItem(mapObj, favList);
+    console.log("maplistItem inside render function", $mapListItem);
+    $("#list-container").append($mapListItem);
+  }
+};
+
+const loadMapList = function() {
+  // empty existing containers
+  $("#list-header").empty();
+  $("#list-container").empty();
+  // add header to map list
+  $("#list-header").text("Available Maps");
+  $.ajax("/maps/maplist")
+  .then((values) => {
+    const mapList = values[0];  // array of maps object (id, name)
+    console.log("mapList", mapList)
+    const favList = values[1];  //array of favs object (map_id)
+    console.log("favList", favList)
+    renderMapList(mapList, favList);
+  }).catch(err => {
+    console.log("loadMapList Error: ", err.message);
+  });
+};
 
 // use document.ready to wait for page to load before loading map list
 $(document).ready(function() {
   loadMapList();
 });
-
-console.log("weeeeeee");
-
-// tweeter used AJAX for load___List to call render function, should we do that here?
-const loadMapList = function() {
-  const maps = getMapList(db)
-  .then(function(maps) {
-    renderMapList(maps);
-  });
-};
-
-// function takes 'maps' object and renders into html using 'create map list element' function
-const renderMapList = function(maps) {
-
-  // get count of maps to add to list
-  const numberOfMaps = maps.length;
-  const container = $('#map-container');
-
-  // empty existing container
-  container.empty();
-
-  // add header to map list
-  // const listHeader = "Available Maps";
-  // container.prepend(`<span id="list-header">${listHeader}</span>`);
-  $("#list-header").text("Available Maps");
-
-  // loop through for n list items to create html from function createMapListElement
-  for (let i = 0; i < numberOfMaps; i++) {
-    const $mapListItem = createMapListElement(maps[i]);
-    container.prepend($mapListItem);
-  }
-};
-
-
-// function takes individual map objects and uses to create map list html
-const createMapListElement = function(mapElement) {
-
-  // assign map_id and map_name to convenience variables
-  const map_id = mapElement.id;
-  const map_name = mapElement.name;
-
-  // create html using convenience variables
-  const $mapListElement = $(
-    `<li>
-      <span>${map_name}</span>
-      <form action="/favs/${map_id}" method="POST">
-        <button type="submit" class="fav-button">
-          <i class="fa-solid fa-heart fav-icon" id="${map_id}"></i>
-        </button>
-      </form>
-    </li>`
-  );
-
-  // return html
-  return $mapListElement;
-};
