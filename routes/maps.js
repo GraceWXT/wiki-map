@@ -11,8 +11,7 @@ const getMaps = function(db) {
     console.log("cookie is", typeof id);
 
     getUserByID(db, id)
-      .then((values) => {
-        const user = values[0];
+      .then((user) => {
         console.log("user object:", user);
         res.render("index", { user });
       })
