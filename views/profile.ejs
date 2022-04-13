@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wiki Map - Profile Page</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Rubik&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+
+  <!-- App CSS -->
+  <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" /> -->
+  <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+  <link rel="stylesheet" href="/styles/profile.css" type="text/css" />
+
+
+  <!-- External JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+  <!-- App JS -->
+  <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
+  <!-- <script type="text/javascript" src="/scripts/init-map.js"></script> -->
+  <!-- <script type="text/javascript" src="/scripts/render-map-list.js"></script> -->
+</head>
+
+
+
+<body>
+  <!-- <%- // include('partials/_header') %> -->
+  <%- include('partials/_header') %>
+
+
+
+  <!-- Avatar & user info div -->
+  <div class="profile-info">
+    <!-- <img src="../images/profile-hex.png"> -->
+    <img src="../images/forrest2.jpg">
+    <div class="profile-text">
+      <span>Forrest</span>
+    </div>
+  </div>
+
+
+
+  <!-- Info columns div -->
+  <div class="table-columns">
+    <div class="info-column" id="created-maps-list">
+      <div class="list-header">
+        <span>Created Maps</span>
+      </div>
+      <li><span>Put maps here</span></li>
+      <li><span>maps maps maps</span></li>
+      <li><span>more maps</span></li>
+      </div>
+      <div class="info-column" id="contributed-pins-list">
+      <div class="list-header">
+        <span>Contributed Pins</span>
+      </div>
+      <li><span>Put pins here</span></li>
+      <li><span>pins pins pins</span></li>
+      <li><span>more pins</span></li>
+      <!-- <li><span>pinswithoutspacespinswithoutspacespinswithoutspacespinswithoutspacespinswithoutspaces</span></li> -->
+    </div>
+    <div class="info-column" id="favorited-maps-list">
+      <div class="list-header">
+        <span>Favorited Maps</span>
+      </div>
+      <li><span>Put maps here</span></li>
+      <li><span>maps maps maps</span></li>
+      <li><span>more maps</span></li>
+      <li><span>more maps</span></li>
+      <li><span>more maps</span></li>
+      <li><span>more maps more maps more maps more maps more maps more maps more maps more maps more maps more maps more maps more maps more maps </span></li>
+
+
+    </div>
+
+  </div>
+
+
+
+
+</body>
+
+</html>

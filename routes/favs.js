@@ -17,12 +17,12 @@ const favRouter = (db) => {
             insertFav(db, mapID, userID);
           } else {
             // delete row where id = favs.id if ID DOES already exist
-            deleteFav(db, fav.id, mapID);
+            deleteFav(db, fav.id);
           }
           res.redirect("/maps");
       })
       .catch((err) => {
-        console.log("getFav (insert or delete) error: ", err.message);
+        console.log("get /favs/:id (insert or delete) error: ", err.message);
       })
   })
 
