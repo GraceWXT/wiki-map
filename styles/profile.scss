@@ -1,0 +1,130 @@
+@import 'variables';
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: $background-color;
+  font-family: $body-font;
+  font-size: 1.8rem;
+  box-sizing: border-box;
+  min-width: 900px;
+
+  &>header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 8vh;
+      width: 100%;
+      background: $nav-color;
+
+      #logo {
+        color: white;
+        font-size: 3rem;
+        font-family: $logo-font;
+        margin: 1rem;
+      }
+
+      .button {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+
+
+  .profile-info {
+    display: flex;
+    width: 100%;
+    height: 35rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    // margin: 1em;
+
+    img {
+    box-sizing: border-box;
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+    margin: 10px;
+    // background-position: bottom;
+    border-radius: 50%;
+    }
+
+  }
+
+  .profile-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 42pt;
+    margin: 10px;
+  }
+
+  .table-columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .info-column {
+      min-width: 15em;
+      width: 25%;
+      max-width: 20em;
+      min-height: 25em;
+      box-sizing: border-box;
+      margin: 20px;
+      height: auto;
+      // border: solid black 1px;
+      padding: 10px;
+      background-color: $list-accent-color;
+      word-break: break-word;
+      // word-wrap: ;
+      border-radius: 0.5em;
+
+
+
+
+
+      .list-header {
+        font-size: 16pt;
+        box-sizing: border-box;
+        padding: 8px;
+        // border: solid black 1px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background-color: $list-header-accent-color;
+        border-radius: 0.25em;
+
+      }
+
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+
+      li {
+        display: flex;
+        display: list-item;
+        align-items: center;
+        list-style-type: disc;
+        list-style-position: inside;
+
+        &>* {
+          margin: 1rem;
+        }
+      }
+    }
+  }
+
+}
