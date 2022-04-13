@@ -22,15 +22,15 @@ const renderMyMapList = function(mapList, favList) {
   for (const mapObj of mapList) {
     const $mapListItem = createMyMapListItem(mapObj, favList);
     console.log("maplistItem inside render function", $mapListItem);
-    $("#list-container").append($mapListItem);
+    $("#created-maps-list > #list-container").append($mapListItem);
   }
 };
 
 const loadMyMapList = function() {
   // empty existing containers
-  $(".created-maps-list #list-header").empty();
-  $(".created-maps-list #list-container").empty();
-  $(".created-maps-list #list-header").text("My Created Maps"); // add header to map list
+  $("#created-maps-list > #list-header").empty();
+  $("#created-maps-list > #list-container").empty();
+  $("#created-maps-list > #list-header").text("My Created Maps"); // add header to map list
   $.ajax("/users/myMapList")
   .then((values) => {
     const mapList = values[0];  // array of maps object (id, name)
