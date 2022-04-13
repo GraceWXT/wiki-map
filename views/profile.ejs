@@ -39,6 +39,10 @@
   <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
   <!-- <script type="text/javascript" src="/scripts/init-map.js"></script> -->
   <!-- <script type="text/javascript" src="/scripts/render-map-list.js"></script> -->
+  <script type="text/javascript" src="/scripts/render-created-map-list.js"></script>
+  <script type="text/javascript" src="/scripts/render-fav-map-list.js"></script>
+  <script type="text/javascript" src="/scripts/render-contributed-pins-list.js"></script>
+  <script type="text/javascript" src="/scripts/new-map.js"></script>
 </head>
 
 
@@ -54,7 +58,7 @@
       <!-- <img src="../images/profile-hex.png"> -->
       <img src="../images/forrest2.jpg">
       <div class="profile-text">
-        <span>Forrest</span>
+        <span><%= user.name %></span>
       </div>
     </div>
 
@@ -71,27 +75,14 @@
 
 
       <!-- second column -->
-      <div class="info-column" id="contributed-pins-list">
-        <div class="list-header">
-          <span>Contributed Pins</span>
-        </div>
-        <li><span>Put pins here</span></li>
-        <li><span>pins pins pins</span></li>
-        <li><span>more pins</span></li>
+      <div class="info-column" id="favorited-maps-list">
+        <%- include('partials/_list') %>
       </div>
 
 
       <!-- third column -->
-      <div class="info-column" id="favorited-maps-list">
-        <div class="list-header">
-          <span>Favorited Maps</span>
-        </div>
-        <li><span>Put maps here</span></li>
-        <li><span>maps maps maps</span></li>
-        <li><span>more maps</span></li>
-        <li><span>more maps</span></li>
-        <li><span>more maps</span></li>
-        <li><span>more maps more maps more maps more maps</span></li>
+      <div class="info-column" id="contributed-pins-list">
+        <%- include('partials/_list') %>
       </div>
 
     </div>

@@ -3,13 +3,13 @@
 
     <div>
       <a  id="logo" href="/maps">Wiki Map</a>
-      <% if (true) { %>
-      <span class="align-middle" style="margin-right: 1em">Welcome Iaan!</span>
+      <% if (user) { %>
+      <span class="align-middle" style="margin-right: 1em">Welcome <%= user.name %>!</span>
     </div>
 
     <div>
       <button class="button new-map">Create New Map</button>
-      <a class="button user-profile" href="/users/:id">My Profile</a>
+      <a class="button user-profile" href="/users/profile">My Profile</a>
       <button class="button log-out">Log Out</button>
     </div>
 
