@@ -32,7 +32,22 @@ const getMapList = function(db) {
       console.log("getMapList error: ", err.message);
     });
 };
-
+/** Get a list of all maps that belong to a specific user */
+const getMapListByUserID = function(db, id) {
+  return db.query(`
+  SELECT maps.id, maps.name
+  FROM maps
+  WHERE owner_id = ${id}
+  ORDER BY maps.id
+  `)
+    .then(res => {
+      const myMapList = res.rows;
+      return myMapList;
+    })
+    .catch((err) => {
+      console.log("getMapListByUserID error:", err.message);
+    });
+};
 
 /** Given a map id and user id, return the fav obj if exists  */
 const getFav = (db, mapID, userID) => {
@@ -63,7 +78,28 @@ const getFavsMapIDByUserID = (db, id) => {
     .catch((err) => {
       console.log("getFavsMapIDByUserID error:", err.message);
     });
-}
+};
+
+
+/** Get a list of fav maps for a specific user */
+const getFavsByUserID = (db, id) => {
+  return db.query(`
+  SELECT map_id, maps.name
+  FROM favs
+  JOIN maps ON map_id = maps.id
+  WHERE user_id = ${id}
+  AND owner_id <> ${id}
+  ORDER BY map_id
+  `)
+    .then(res => {
+      const favMaps = res.rows;
+      return favMaps;
+    })
+    .catch((err) => {
+      console.log("getFavsByUserID error:", err.message);
+    });
+};
+
 
 /** A function that takes the user id and map name and inserts the new map to database  */
 const insertMap = (db, userID, mapName) => {
@@ -83,10 +119,13 @@ const insertMap = (db, userID, mapName) => {
 
 /** a function to create new fav given an user id and map id */
 
+
+/** a function to create new fav given a user id and map id */
 const insertFav = (db, mapID, userID) => {
   return db.query(`
   INSERT INTO favs (map_id, user_id)
   VALUES ($1, $2)
+
   RETURNING * `, [mapID, userID])
     .then((res) => {
       const newFav = res.rows[0];
@@ -97,7 +136,9 @@ const insertFav = (db, mapID, userID) => {
     });
 };
 
-/** a function to delete the fav given fav id  */
+
+/** a function to delete the fav given the fav id */
+
 const deleteFav = (db, favID) => {
   return db.query(`
   DELETE FROM favs
@@ -110,4 +151,5 @@ const deleteFav = (db, favID) => {
       console.log("deleteFav error:", err.message);
     });
 };
-module.exports = { getMapList, getUserByID, getFav, getFavsMapIDByUserID, insertMap, insertFav, deleteFav };
+
+module.exports = { getMapList, getUserByID, getFav, getFavsMapIDByUserID, insertMap, insertFav, deleteFav, getFavsByUserID, getMapListByUserID};
