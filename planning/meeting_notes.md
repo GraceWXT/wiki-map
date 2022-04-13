@@ -49,9 +49,10 @@ Project completion: 60% (edited)
 # 2022-04-13 Planning Meeting
 * 2 days remaining
 # Core
-- [ ] Load pin markers in map view (group)
+- [X] Load pin markers in map view (group)
+- [X] Set initial zoom for map with pins (group)
+- [ ] 'New pin' function upon map click (group)
 - [ ] Load pin marker details on pin click (breakout)
-- [ ] 'New pin' function upon map click (breakout)
 - [ ] 
 - [ ] 
 
@@ -62,7 +63,7 @@ Project completion: 60% (edited)
 - [ ] partial update (frontend) during map like/unlike (homepage)
 - [ ] experiment with other color palettes
 - [ ] match all pages min width/height
-- [ ] 
+- [ ] pin padding edge cases
 - [ ] 
 - [ ] 
 

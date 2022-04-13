@@ -38,7 +38,7 @@ const getMapListByUserID = function(db, id) {
   SELECT maps.id, maps.name
   FROM maps
   WHERE owner_id = ${id}
-  ORDER BY maps.id
+  ORDER BY maps.id;
   `)
     .then(res => {
       const myMapList = res.rows;
@@ -70,7 +70,7 @@ const getFavsMapIDByUserID = (db, id) => {
   return db.query(`
   SELECT map_id FROM favs
   WHERE user_id = ${id}
-  ORDER BY id`)
+  ORDER BY id;`)
     .then(res => {
       const favs = res.rows;
       return favs;
@@ -89,7 +89,7 @@ const getFavsByUserID = (db, id) => {
   JOIN maps ON map_id = maps.id
   WHERE user_id = ${id}
   AND owner_id <> ${id}
-  ORDER BY map_id
+  ORDER BY map_id;
   `)
     .then(res => {
       const favMaps = res.rows;
@@ -108,7 +108,7 @@ const getPinsByUserID = (db, id) => {
   JOIN maps ON map_id = maps.id
   WHERE creator_id = ${id}
   AND owner_id <> ${id}
-  ORDER BY pins.id DESC
+  ORDER BY pins.id DESC;
   `)
     .then(res => {
       const pins = res.rows;
@@ -120,12 +120,12 @@ const getPinsByUserID = (db, id) => {
 };
 
 /** Get a list of pins for a specific map ID */
-const getPinsByMapID = (db, mapID) => {
+const getPinTitlesByMapID = (db, mapID) => {
   return db.query(`
   SELECT title
   FROM pins
   WHERE map_id = ${mapID}
-  ORDER BY pins.id DESC
+  ORDER BY pins.id DESC;
   `)
     .then(res => {
       const pins = res.rows;
@@ -141,7 +141,7 @@ const getMapByID = (db, mapID) => {
   return db.query(`
   SELECT *
   FROM maps
-  WHERE id = ${mapID}
+  WHERE id = ${mapID};
   `)
     .then(res => {
       const map = res.rows[0];
@@ -157,7 +157,8 @@ const insertMap = (db, userID, mapName) => {
   return db.query(`
   INSERT INTO maps (owner_id, name)
   VALUES ($1, $2)
-  RETURNING *`, [userID, mapName])
+  RETURNING *;
+  `, [userID, mapName])
     .then((res) => {
       const newMap = res.rows[0];
       console.log("map inserted", newMap);
@@ -176,11 +177,12 @@ const insertFav = (db, mapID, userID) => {
   return db.query(`
   INSERT INTO favs (map_id, user_id)
   VALUES ($1, $2)
-
-  RETURNING * `, [mapID, userID])
+  RETURNING *;
+  `, [mapID, userID])
     .then((res) => {
       const newFav = res.rows[0];
       console.log("fav inserted", newFav);
+      return newFav;
     })
     .catch((err) => {
       console.log("insertFav error:", err.message);
@@ -193,7 +195,7 @@ const insertFav = (db, mapID, userID) => {
 const deleteFav = (db, favID) => {
   return db.query(`
   DELETE FROM favs
-  WHERE favs.id = ${favID}
+  WHERE favs.id = ${favID};
   `)
     .then(() => {
       console.log("fav deleted, id: ", favID);
@@ -203,10 +205,41 @@ const deleteFav = (db, favID) => {
     });
 };
 
+const getPinsByMapID = (db, mapId) => {
+  return db.query(`
+  SELECT * FROM pins
+  WHERE map_id = ${mapId};
+  `)
+    .then((res) => {
+      const pins = res.rows;
+      console.log( `Pins for map ID: ${mapId}`, pins);
+      return pins;
+    })
+    .catch((err) => {
+      console.log("deleteFav error:", err.message);
+    });
+};
+
+const getBoundsByMapID = (db, mapId) => {
+  return db.query(`
+  SELECT min(latitude) AS min_lat, min(longitude) AS min_lng, max(latitude) AS max_lat, max(longitude) AS max_lng FROM pins
+  WHERE map_id = ${mapId};
+  `)
+    .then((res) => {
+      const bounds = res.rows[0];
+      console.log( `bound for map ID: ${mapId}`, bounds);
+      return bounds;
+    })
+    .catch((err) => {
+      console.log("deleteFav error:", err.message);
+    });
+}
+
 module.exports = {
   getMapByID,
-  getPinsByMapID,
+  getPinTitlesByMapID,
   getPinsByUserID,
+  getPinsByMapID,
   getMapList,
   getUserByID,
   getFav,
@@ -215,5 +248,6 @@ module.exports = {
   insertFav,
   deleteFav,
   getFavsByUserID,
-  getMapListByUserID
+  getMapListByUserID,
+  getBoundsByMapID
 };

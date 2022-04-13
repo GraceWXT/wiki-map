@@ -1,7 +1,7 @@
 // requre express & setup router
 const express = require('express');
 const router = express.Router();
-const { getMapByID, getUserByID, getMapList, getFavsMapIDByUserID, insertMap, getPinsByMapID } = require('../db/queries');
+const { getBoundsByMapID, getMapByID, getPinTitlesByMapID, getUserByID, getMapList, getFavsMapIDByUserID, insertMap, getPinsByMapID } = require('../db/queries');
 
 const mapsRouter = function(db) {
   // express router trims '/maps'
@@ -50,10 +50,25 @@ const mapsRouter = function(db) {
     });
   })
 
-  // GET /maps/:id/pins  => send the pin title and map name of a specific map
+  // GET /maps/:id/pins  => send the pin info of a specific map
   router.get("/:id/pins", (req, res) => {
+   const mapID = Number.parseInt(req.params.id);
+   const pinsPromise = getPinsByMapID(db, mapID);
+   const boundPromise = getBoundsByMapID(db, mapID);
+   Promise.all([pinsPromise, boundPromise])
+    .then((values)=> {
+       res.json(values);
+     })
+     .catch((err) => {
+       // catch error if any and console log
+       console.log("get /maps/:id/pins Error", err.message);
+     });
+ });
+
+  // GET /maps/:id/pins  => send the pin title and map name of a specific map
+  router.get("/:id/pinTitles", (req, res) => {
     const mapID = Number.parseInt(req.params.id);
-    const pinsPromise = getPinsByMapID(db, mapID);
+    const pinsPromise = getPinTitlesByMapID(db, mapID);
     const mapPromise = getMapByID(db, mapID);
     Promise.all([pinsPromise, mapPromise])
       .then((values) => {
@@ -61,7 +76,7 @@ const mapsRouter = function(db) {
       })
       .catch((err) => {
         // catch error if any and console log
-        console.log("get /maps/:id/pins Error", err.message);
+        console.log("get /maps/:id/pinTitles Error", err.message);
       });
   });
 

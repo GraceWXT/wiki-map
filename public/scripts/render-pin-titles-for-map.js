@@ -27,7 +27,7 @@ const loadMyPinList = function () {
   $("#pin-list-by-map .list-container").empty();
 
 
-  $.ajax(`/maps/${mapId}/pins`)   // How to get the map ID from browser?
+  $.ajax(`/maps/${mapId}/pinTitles`)   // How to get the map ID from browser?
   .then((values) => {
     const pinList = values[0];
     const mapName = values[1].name;
@@ -38,7 +38,7 @@ const loadMyPinList = function () {
     });
 };
 
-console.log("Do we get here?------------------------>");
+// console.log("Do we get here?------------------------>");
 
 // use document.ready to wait for page to load before loading map list
 $(document).ready(function () {
