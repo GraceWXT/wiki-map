@@ -37,3 +37,36 @@
 - [ ] figure out git pull error
 - [ ] group review of list items && targeting attribute id (1pm)
 - [ ] 
+
+
+# 2022-04-12 Notes
+Teammates: Grace Wang, Josh Sparkes, Iaan Johnston
+What features have you worked on yesterday: Built out map view page with nav bar, map API, new map slide-down element.
+What have you worked on today: Creating new map page, creating user profile page, rending list of points on map page, rendering list of maps and points on user profile.
+What has been difficult: Connecting front-end and back-end, map API with access token, git merge conflicts.
+Project completion: 60% (edited)
+
+# 2022-04-13 Planning Meeting
+* 2 days remaining
+# Core
+- [ ] Load pin markers in map view (group)
+- [ ] Load pin marker details on pin click (breakout)
+- [ ] 'New pin' function upon map click (breakout)
+- [ ] 
+- [ ] 
+
+# Stretch
+- [ ] list views align hearts
+- [ ] nav bar side margins
+- [ ] update characters for demo
+- [ ] partial update (frontend) during map like/unlike (homepage)
+- [ ] experiment with other color palettes
+- [ ] match all pages min width/height
+- [ ] 
+- [ ] 
+- [ ] 
+
+
+
+
+
