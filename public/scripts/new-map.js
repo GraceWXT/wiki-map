@@ -19,7 +19,7 @@ $(()=> {
         data: mapNameQueryString,
         success:(data) => {
           // console.log("data from server response:", data);
-            window.location.href = `http://localhost:8080${data}`;
+          window.location.href = `http://localhost:8080${data}`;
         }
       }).catch((err => {
         console.log("ajax POST /maps error: ", err);

@@ -7,20 +7,10 @@
 
 const express = require('express');
 const router  = express.Router();
-const { getUserByID, getMapListByUserID, getFavsByUserID, getFavsMapIDByUserID } = require('../db/queries');
+const { getPinsByUserID, getUserByID, getMapListByUserID, getFavsByUserID, getFavsMapIDByUserID } = require('../db/queries');
 
 
-const profileRouter = (db) => {
-  router.get("/:id", (req, res) => {
-    const id = Number.parseInt(req.cookies["user_id"]);
-    getUserByID(db, id)
-      .then((user)  => {
-        res.render("iaan file name", { user });
-      })
-      .catch((err) => {
-        console.log("get/users/:id error:", err.message);
-      })
-   });
+const usersRouter = (db) => {
 
   router.get("/myMapList", (req, res) => {
     const id = Number.parseInt(req.cookies["user_id"]);
@@ -31,7 +21,7 @@ const profileRouter = (db) => {
       res.json(values);
     })
     .catch((err) => {
-      console.log("get/myMapList error:", err.message)
+      console.log("get/users/myMapList error:", err.message)
     })
   });
 
@@ -42,11 +32,36 @@ const profileRouter = (db) => {
       res.json(favMaps);
     })
     .catch((err) => {
-      console.log("get/myFavMaps error:", err.message);
+      console.log("get/users/myFavMaps error:", err.message);
     })
   });
+
+  router.get("/myPins", (req, res) => {
+    const id = Number.parseInt(req.cookies["user_id"]);
+    getPinsByUserID(db, id)
+    .then((pins) => {
+      res.json(pins);
+    })
+    .catch((err) => {
+      console.log("get/users/pins error:", err.message);
+    })
+  });
+
+  router.get("/profile", (req, res) => {
+    const id = Number.parseInt(req.cookies["user_id"]);
+    getUserByID(db, id)
+      .then((user)  => {
+        res.render("profile", { user });
+      })
+      .catch((err) => {
+        console.log("get/users/:id error:", err.message);
+      })
+  });
+
+
+
   return router;
 };
 
-module.exports = profileRouter;
+module.exports = usersRouter;
 
