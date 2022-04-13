@@ -6,7 +6,7 @@ router.get('/:id', (req, res) => {
   // or using plain-text cookies
   res.cookie('user_id', req.params.id);
   // send the user somewhere
-  res.redirect('/');
+  res.redirect('/maps');
 });
 
 module.exports = router;

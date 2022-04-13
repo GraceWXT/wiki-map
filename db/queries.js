@@ -119,7 +119,7 @@ const getPinsByUserID = (db, id) => {
     });
 };
 
-/** Get a list of contributed pins for a specific user */
+/** Get a list of pins for a specific map ID */
 const getPinsByMapID = (db, mapID) => {
   return db.query(`
   SELECT title
@@ -136,6 +136,21 @@ const getPinsByMapID = (db, mapID) => {
     });
 };
 
+/** Get the map name of a specific id */
+const getMapByID = (db, mapID) => {
+  return db.query(`
+  SELECT *
+  FROM maps
+  WHERE id = ${mapID}
+  `)
+    .then(res => {
+      const map = res.rows[0];
+      return map;
+    })
+    .catch((err) => {
+      console.log("getPinsByMapID error:", err.message);
+    });
+};
 
 /** A function that takes the user id and map name and inserts the new map to database  */
 const insertMap = (db, userID, mapName) => {
@@ -189,6 +204,7 @@ const deleteFav = (db, favID) => {
 };
 
 module.exports = {
+  getMapByID,
   getPinsByMapID,
   getPinsByUserID,
   getMapList,

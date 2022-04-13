@@ -25,11 +25,13 @@ const loadMyPinList = function () {
 
   $("#pin-list-by-map .list-header").empty();
   $("#pin-list-by-map .list-container").empty();
-  $("#pin-list-by-map .list-header").text(`Pins for map ID: ${mapId}`); // add header to map list
 
 
   $.ajax(`/maps/${mapId}/pins`)   // How to get the map ID from browser?
-    .then((pinList) => {
+  .then((values) => {
+    const pinList = values[0];
+    const mapName = values[1].name;
+    $("#pin-list-by-map .list-header").text(`${mapName}`); // add header to map list
       renderMyPinList(pinList);
     }).catch(err => {
       console.log("loadPinList Error: ", err.message);

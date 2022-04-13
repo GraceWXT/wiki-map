@@ -46,11 +46,11 @@ app.use("/api/users",usersRoutes(db) );
 app.use("/api/widgets", widgetsRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
-const getMaps = require("./routes/maps");
-app.use("/maps", getMaps(db));
-
 const loginRouter = require("./routes/login");
 app.use("/login", loginRouter);
+
+const mapsRouter = require("./routes/maps");
+app.use("/maps", mapsRouter(db));
 
 const favRouter = require("./routes/favs");
 app.use("/favs", favRouter(db))

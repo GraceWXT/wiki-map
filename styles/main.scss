@@ -66,7 +66,7 @@ body {
     width: 100%;
 
     #map-container {
-
+      border-radius: 1em;
       margin: 2.5vh;
       height: 85vh;
       width: 85vh;
@@ -75,29 +75,45 @@ body {
 
     section {
       height: 85vh;
+      width: 60vh;
       margin: 2.5vh;
-      border: solid navy 1px;
+      border: solid $light-blue 1px;
+      border-radius: 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: $light-blue;
 
       header {
-        width: 60vh;
+        width: 96%;
         min-width: 45vh;
         display: flex;
         justify-content: center;
-        border: solid red 1px;
+        border: solid $background-color 1px;
+        border-radius: 1em;
+        margin: 2%;
+        background-color: $maps-header-color;
+
+
         span {
           font-size: 2rem;
           margin: 1rem;
         }
       }
 
-      ul {
+      .list-container {
         flex-direction: column;
+        width: 96%;
 
         li {
           display: list-item;
           align-items: center;
           list-style-type: disc;
           list-style-position: inside;
+
+          span {
+            line-height: 2em;
+          }
 
           & > * {
             margin: 1rem;

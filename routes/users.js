@@ -58,7 +58,13 @@ const usersRouter = (db) => {
       })
   });
 
-
+  router.get("/img", (req, res) => {
+    const id = Number.parseInt(req.cookies["user_id"]);
+    getUserByID(db, id)
+      .then((user) => {
+        res.send(user.profile_image_url);
+      })
+  });
 
   return router;
 };

@@ -1,9 +1,9 @@
 // requre express & setup router
 const express = require('express');
 const router = express.Router();
-const { getUserByID, getMapList, getFavsMapIDByUserID, insertMap, getPinsByMapID } = require('../db/queries');
+const { getMapByID, getUserByID, getMapList, getFavsMapIDByUserID, insertMap, getPinsByMapID } = require('../db/queries');
 
-const getMaps = function(db) {
+const mapsRouter = function(db) {
   // express router trims '/maps'
   // GET /maps Homepage
   router.get("/", (req,res) => {
@@ -50,12 +50,14 @@ const getMaps = function(db) {
     });
   })
 
-  // GET /maps/:id/pins  => send the pin title of a specific map
+  // GET /maps/:id/pins  => send the pin title and map name of a specific map
   router.get("/:id/pins", (req, res) => {
     const mapID = Number.parseInt(req.params.id);
-    getPinsByMapID(db, mapID)
-      .then((pins) => {
-        res.json(pins);
+    const pinsPromise = getPinsByMapID(db, mapID);
+    const mapPromise = getMapByID(db, mapID);
+    Promise.all([pinsPromise, mapPromise])
+      .then((values) => {
+        res.json(values);
       })
       .catch((err) => {
         // catch error if any and console log
@@ -80,4 +82,4 @@ const getMaps = function(db) {
   return router;
 };
 
-module.exports = getMaps;
+module.exports = mapsRouter;
