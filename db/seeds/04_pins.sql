@@ -24,7 +24,7 @@ INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, i
 VALUES (2, 2, 40.7639452, -73.9849077, 'Ground Central Coffee Company', 'GC is a one-of-a-kind independent coffeeshop serving a distinct La Colombe blend, and a variety of delicacies from local food providers.', 'https://lh5.googleusercontent.com/p/AF1QipNlHtTHIO40nqZv-C28FU8e9mjCwlJbg_U4Pk7K=w408-h272-k-no');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (2, 2, 40.721264, -74.0188686, 'Banter NYC', 'A local cafe in Greenwich Village Cozy with a patio featuring elevated, health-conscious fare, plus espresso & select cocktails.', 'https://3.bp.blogspot.com/-VIN_ORaAnUs/WJ9DICYckHI/AAAAAAAAbn0/W3KG0DW77mU99Gm_NjBnBobvV4RoT6lmQCEw/s1600/Banter-NYC-Brunch-Sullivan-6.jpg');
+VALUES (2, 3, 40.721264, -74.0188686, 'Banter NYC', 'A local cafe in Greenwich Village Cozy with a patio featuring elevated, health-conscious fare, plus espresso & select cocktails.', 'https://3.bp.blogspot.com/-VIN_ORaAnUs/WJ9DICYckHI/AAAAAAAAbn0/W3KG0DW77mU99Gm_NjBnBobvV4RoT6lmQCEw/s1600/Banter-NYC-Brunch-Sullivan-6.jpg');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title)
 VALUES (2, 1, 39.0515761, -77.1474078, 'The White House');
