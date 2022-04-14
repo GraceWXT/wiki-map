@@ -1,32 +1,3 @@
-const initMap = (bound) => {
-  let map;
-
-  if (!Object.keys(bound).length) {
-    // set map to default view if there's no pin for this map id
-    map = L.map('map-container', {
-      doubleClickZoom: false
-    }).setView([20, 0], 1.5);
-  } else {
-    // set map to fitbound view if bound is provided
-    map = L.map('map-container').fitBounds([
-      [bound.min_lat, bound.min_lng],
-      [bound.max_lat, bound.max_lng]
-    ]);
-    if (map) console.log("fitBound map exist");
-  }
-
-  L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoiYmFuYW5hbmVrbyIsImEiOiJja3YydGt1bnAwMzl4MnBvOHJ1cWU0djl5In0.aAvP-kOL6unp0F5o1dIq4g'
-  }).addTo(map);
-
-  return map;
-}
-
 /** A function that creates a marker with given pin info on given map
  * binds a popup to the marker that shows up on click with pin info
  * and on marker right click show popup of the edit/delete pin interface
@@ -49,7 +20,7 @@ const createMarker = (userId, pin, map) => {
     <h3 class="pin-info">${pin.title}</h3>
     ${pin.description? `<p class="pin-info">${pin.description}</p>` : ''}
     ${pin.image_url? `<img class="pin-img" src='${pin.image_url}'>` : ''}
-    <footer>Right Click to manage your pin</footer>
+    <footer>Right click to manage your pin</footer>
     `, {
       closeOnClick: false,
       keepInView: true
@@ -62,7 +33,7 @@ const createMarker = (userId, pin, map) => {
       <h3 class="pin-info">${pin.title}</h3>
       ${pin.description? `<p class="pin-info">${pin.description}</p>` : ''}
       ${pin.image_url? `<img class="pin-img" src='${pin.image_url}'>` : ''}
-      <footer>Right Click to manage your pin</footer>
+      <footer>Right click to manage your pin</footer>
   `)
   })
   .on('contextmenu', function() {
@@ -129,7 +100,32 @@ const initMapAndPins = function () {
       const userId = values[2];
       console.log("userId in received from ajax", userId)
 
-      let map = initMap(bound);
+      let map;
+
+      if (!Object.keys(pins).length) {
+        // set map to default view if there's no pin for this map id
+        map = L.map('map-container', {
+          doubleClickZoom: false
+        }).setView([20, 0], 1.5);
+      } else {
+        // set map to fitbound view if bound is provided
+        map = L.map('map-container').fitBounds([
+          [bound.min_lat, bound.min_lng],
+          [bound.max_lat, bound.max_lng]
+        ], {
+          padding: [10, 10]
+        });
+        if (map) console.log("fitBound map exist");
+      }
+
+      L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoiYmFuYW5hbmVrbyIsImEiOiJja3YydGt1bnAwMzl4MnBvOHJ1cWU0djl5In0.aAvP-kOL6unp0F5o1dIq4g'
+      }).addTo(map);
 
       return [userId, pins, map];
 

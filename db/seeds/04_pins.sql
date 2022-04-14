@@ -6,24 +6,18 @@ INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, i
 VALUES (1, 1, 50.015083, -110.693254, 'SliderMan', 'Fun Waterpark', 'https://lh5.googleusercontent.com/p/AF1QipPJO1k4x1RWW3iB0AC7Ji4QLNvZE-1tPSG-S82F=w408-h306-k-no');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (1, 2, 40.695034,-73.906084, 'Queens Coffee', 'Best coffee in queens', 'https://lh5.googleusercontent.com/p/AF1QipP5plW4M9waD9HS74aWQ3QcTsu1DDKJ0gmHTjuX=w408-h510-k-no');
+VALUES (1, 3, 30.2973599,-87.617019, 'Orange Beach', 'More of a city but still on the water', 'https://lh6.googleusercontent.com/proxy/Zgicbu0BRgqIo3gxD8aOsU7S09UHns32_Dic-54KzxYN4A8mlpm8GXBkal1Lo7ZyrjpUlju6rHQdOVgtdvCBb74kC7A5SbnkrhgThGxai2NAjoheWqWs8pkkdcklafTflIeK9bH25yMy6vQJN5tz_UVixxWySXM=w408-h270-k-no');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (1, 2, 40.699249,-73.9471217, 'Bond Collective', 'Boujee coffee shop in Brooklyn', 'https://lh5.googleusercontent.com/p/AF1QipNkBxry6YuArAFRziaSBWcwRQ-cnyxf8U3OEXVZ=w408-h272-k-no');
-
-INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (1, 4, 30.2973599,-87.617019, 'Orange Beach', 'More of a city but still on the water', 'https://lh6.googleusercontent.com/proxy/Zgicbu0BRgqIo3gxD8aOsU7S09UHns32_Dic-54KzxYN4A8mlpm8GXBkal1Lo7ZyrjpUlju6rHQdOVgtdvCBb74kC7A5SbnkrhgThGxai2NAjoheWqWs8pkkdcklafTflIeK9bH25yMy6vQJN5tz_UVixxWySXM=w408-h270-k-no');
-
-INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (1, 4, 30.2921629,-87.5881799, 'Alabama Point East', 'The best beach ever', 'https://lh5.googleusercontent.com/p/AF1QipMZ4bY9oYa_GmnpgFVRr4AZcS7nk_NDka1MLD7Q=w408-h306-k-no');
+VALUES (1, 3, 30.2921629,-87.5881799, 'Alabama Point East', 'The best beach ever', 'https://lh5.googleusercontent.com/p/AF1QipMZ4bY9oYa_GmnpgFVRr4AZcS7nk_NDka1MLD7Q=w408-h306-k-no');
 
 
 -- CREATED BY MONICA
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (2, 2, 40.7639452, -73.9849077, 'Ground Central Coffee Company', 'GC is a one-of-a-kind independent coffeeshop serving a distinct La Colombe blend, and a variety of delicacies from local food providers.', 'https://lh5.googleusercontent.com/p/AF1QipNlHtTHIO40nqZv-C28FU8e9mjCwlJbg_U4Pk7K=w408-h272-k-no');
+VALUES (2, 2, 40.7396097, -73.9855818, 'Central Perk', 'Totally a real place', '');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (2, 2, 40.721264, -74.0188686, 'Banter NYC', 'A local cafe in Greenwich Village Cozy with a patio featuring elevated, health-conscious fare, plus espresso & select cocktails.', 'https://3.bp.blogspot.com/-VIN_ORaAnUs/WJ9DICYckHI/AAAAAAAAbn0/W3KG0DW77mU99Gm_NjBnBobvV4RoT6lmQCEw/s1600/Banter-NYC-Brunch-Sullivan-6.jpg');
+VALUES (2, 2, 40.7279278,-74.0031734, 'Banter NYC', 'A local cafe in Greenwich Village Cozy with a patio featuring elevated, health-conscious fare, plus espresso & select cocktails.', 'https://3.bp.blogspot.com/-VIN_ORaAnUs/WJ9DICYckHI/AAAAAAAAbn0/W3KG0DW77mU99Gm_NjBnBobvV4RoT6lmQCEw/s1600/Banter-NYC-Brunch-Sullivan-6.jpg');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title)
 VALUES (2, 1, 39.0515761, -77.1474078, 'White Slide Park');
@@ -32,10 +26,10 @@ INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, i
 VALUES (2, 1, 37.8269775,-122.4251442, 'San Fran Slides', 'Notorious prison & once home to Al Capone, now a museum with audio tour, accessible by ferry.', 'https://lh5.googleusercontent.com/p/AF1QipMfUkuWb61lVPUrOpCZlL9k8NZKY6NJWQ8Z4rL-=w408-h268-k-no');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (2, 4, 31.15307, -87.9838986, 'Gulf Shores Public Beach', 'Tranquil coastline retreat for swimming, boarding, sunbathing & walking.', 'https://lh5.googleusercontent.com/p/AF1QipNMHoBxO3ji6RszR1KV-bQESPs8FZ3naWQIR0km=w408-h306-k-no');
+VALUES (2, 3, 31.15307, -87.9838986, 'Gulf Shores Public Beach', 'Tranquil coastline retreat for swimming, boarding, sunbathing & walking.', 'https://lh5.googleusercontent.com/p/AF1QipNMHoBxO3ji6RszR1KV-bQESPs8FZ3naWQIR0km=w408-h306-k-no');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, image_url)
-VALUES (2, 4, 31.15307, -87.9838986, 'Dauphin Island Beach', 'https://lh5.googleusercontent.com/p/AF1QipPY_wWIqF53I8VJ8DVWlin7GLybybQ7U3k1kf_l=w408-h306-k-no');
+VALUES (2, 3, 31.15307, -87.9838986, 'Dauphin Island Beach', 'https://lh5.googleusercontent.com/p/AF1QipPY_wWIqF53I8VJ8DVWlin7GLybybQ7U3k1kf_l=w408-h306-k-no');
 
 
 -- CREATED BY JOEY
@@ -49,10 +43,10 @@ INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, i
 VALUES (3, 2, 40.744966, -73.9958511, 'Froth Cafe', 'Great place for bean juice', 'https://lh5.googleusercontent.com/p/AF1QipNX78qYq-134xeNLVk1AHDPyH8nrHn-w5jJanhe=w408-h287-k-no');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description)
-VALUES (3, 2, 40.7401538, -73.9877831, 'New York City Bagel', 'Love the bagels here!');
+VALUES (3, 2, 40.7401538, -73.9877831, 'New York City Bagel', 'This spot is great!');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (3, 4, 30.6028621, -87.9145425, 'Belrose Beach', 'Great sunny spot!', 'https://lh5.googleusercontent.com/p/AF1QipO5wSVRI8V5okHSF99JzxZ-FHT32bgTww7MCcps=w408-h306-k-no');
+VALUES (3, 3, 30.6028621, -87.9145425, 'Belrose Beach', 'Great sunny spot!', 'https://lh5.googleusercontent.com/p/AF1QipO5wSVRI8V5okHSF99JzxZ-FHT32bgTww7MCcps=w408-h306-k-no');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (3, 4, 30.3692936, -88.2471646, 'Rolston Beach', 'Super nice beach', 'https://lh5.googleusercontent.com/p/AF1QipMvdCeRf8VIE0p06SwCViQCuecujiyYzFi-ocF5=w408-h544-k-no');
+VALUES (3, 3, 30.3692936, -88.2471646, 'Rolston Beach', 'Super nice beach', 'https://lh5.googleusercontent.com/p/AF1QipMvdCeRf8VIE0p06SwCViQCuecujiyYzFi-ocF5=w408-h544-k-no');

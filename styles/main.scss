@@ -98,6 +98,7 @@ body {
 
       h3 {
         margin-bottom: 0;
+        font-weight: bold;
       }
 
       p {
@@ -120,7 +121,7 @@ body {
       width: 60vh;
       margin: 2.5vh;
       border: solid $light-blue 1px;
-      border-radius: 1em;
+      border-radius: 0.6em;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -132,7 +133,7 @@ body {
         display: flex;
         justify-content: center;
         border: solid $background-color 1px;
-        border-radius: 1em;
+        border-radius: 0.3em;
         margin: 2%;
         background-color: $maps-header-color;
 
@@ -145,6 +146,7 @@ body {
 
       .list-container {
         flex-direction: column;
+        padding-inline-start: 20px;
         width: 96%;
 
         li {
@@ -152,6 +154,11 @@ body {
           align-items: center;
           list-style-type: disc;
           list-style-position: inside;
+
+
+        a {
+          color: $link-text
+        }
 
           span {
             line-height: 2em;
@@ -174,11 +181,11 @@ body {
           }
 
           .fav-icon {
-            color: $nav-color;
+            color: $unliked;
           }
 
           .fav-icon.liked {
-            color: $submit;
+            color: $liked;
           }
         }
       }

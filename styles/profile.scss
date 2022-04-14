@@ -95,7 +95,7 @@ body {
     justify-content: center;
 
     .info-column {
-      min-width: 15em;
+      min-width: 18em;
       width: 25%;
       max-width: 30em;
       min-height: 25em;
@@ -117,7 +117,7 @@ body {
         font-size: 16pt;
         box-sizing: border-box;
         padding: 8px;
-        // border: solid black 1px;
+        // border: solid blackAvailable Maps1px;
         margin-bottom: 10px;
         display: flex;
         flex-direction: row;
@@ -129,15 +129,20 @@ body {
 
     }
 
-    ul {
+    ul.list-container {
       display: flex;
       flex-direction: column;
+      padding-inline-start: 20px;
 
       li {
         display: list-item;
         align-items: center;
         list-style-type: disc;
         list-style-position: inside;
+
+        a {
+          color: $link-text
+        }
 
         &>* {
           margin: 1rem;
@@ -154,11 +159,11 @@ body {
         }
 
         .fav-icon {
-          color: $nav-color;
+          color: $unliked;
         }
 
         .fav-icon.liked {
-          color: $submit;
+          color: $liked;
         }
       }
     }
