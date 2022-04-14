@@ -51,8 +51,8 @@ Project completion: 60% (edited)
 # Core
 - [X] Load pin markers in map view (group)
 - [X] Set initial zoom for map with pins (group)
-- [ ] 'New pin' function upon map click (group)
-- [ ] Load pin marker details on pin click (breakout)
+- [X] 'New pin' function upon map click (group)
+- [ ] Load pin marker details on pin click (group)
 - [ ] 
 - [ ] 
 

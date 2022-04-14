@@ -42,10 +42,14 @@ const initMapAndPins = function () {
       map.on("click", (event) => {
         console.log("event.latlng", event.latlng);
         const { lat, lng } = event.latlng;
-        let popup = L.popup().setLatLng([lat, lng]).setContent(`
-        <form action="/maps/${mapId}/pins" method="POST">
+        console.log("lat & tpyeof lat:", lat, typeof lat);
+        console.log("lng & tpyeof lng:", lng, typeof lng);
+        let popup = L.popup().setLatLng([lat, lng])
+        // console.log("latlng after popup: ", lat, lng)
+        .setContent(`
+        <form action="/maps/${mapId}/${lat}/${lng}/pins" method="POST">
         <input placeholder="Title" name="title" width="10em" margin-bottom="1em"></input>
-        <input placeholder="Description" name="description"></input>
+        <input placeholder="Description" name="desc"></input>
         <input placeholder="Image URL" name="img"></input>
         <button id="newPinButton" type="submit">Create Pin</button>
         </form>

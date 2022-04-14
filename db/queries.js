@@ -170,7 +170,21 @@ const insertMap = (db, userID, mapName) => {
 };
 
 /** a function to create new fav given an user id and map id */
-
+const insertPinByMapID = (db, userID, mapID, lat, lng, title, desc, img) => {
+  return db.query(`
+  INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
+  VALUES ($1, $2, $3, $4, $5, $6, $7)
+  RETURNING *;
+  `, [userID, mapID, lat, lng, title, desc, img])
+    .then((res) => {
+      const newPin = res.rows[0];
+      console.log("pin inserted", newMap);
+      return newPin;
+    })
+    .catch((err) => {
+      console.log("insertPinByMapID error:", err.message);
+    });
+};
 
 /** a function to create new fav given a user id and map id */
 const insertFav = (db, mapID, userID) => {
@@ -246,6 +260,7 @@ module.exports = {
   getFavsMapIDByUserID,
   insertMap,
   insertFav,
+  insertPinByMapID,
   deleteFav,
   getFavsByUserID,
   getMapListByUserID,
