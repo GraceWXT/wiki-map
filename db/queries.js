@@ -256,7 +256,7 @@ const getPinsByMapID = (db, mapId) => {
   `)
     .then((res) => {
       const pins = res.rows;
-      console.log( `Pins for map ID: ${mapId}`, pins);
+      // console.log( `Pins for map ID: ${mapId}`, pins);
       return pins;
     })
     .catch((err) => {
