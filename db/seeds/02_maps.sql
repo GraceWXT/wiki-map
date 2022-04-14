@@ -1,4 +1,4 @@
-INSERT INTO maps (owner_id, name) VALUES (1, 'Cool Waterslides across North America');
-INSERT INTO maps (owner_id, name) VALUES (2, 'Relaxed Coffee Shops in New York');
-INSERT INTO maps (owner_id, name) VALUES (2, 'Best Brunch Spots in New York');
-INSERT INTO maps (owner_id, name) VALUES (3, 'Fun Beaches in Alabama');
+INSERT INTO maps (owner_id, name) VALUES (1, 'Waterslide Parks');
+INSERT INTO maps (owner_id, name) VALUES (2, 'Coffee Shops');
+INSERT INTO maps (owner_id, name) VALUES (2, 'Cool Brunch Spots');
+INSERT INTO maps (owner_id, name) VALUES (3, 'Alabama Beaches');

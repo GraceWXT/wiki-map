@@ -76,7 +76,7 @@ Project completion: 60% (edited)
 - [X] L-click pin to see info
 - [X] R-click pin to edit info
 - [ ] Presentation planning
-- [ ] 
+- [ ] add doubleClickZoom: false to map renders
 - [ ] 
 - [ ] 
 - [ ] 

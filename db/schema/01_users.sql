@@ -2,5 +2,5 @@ DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  profile_image_url VARCHAR(255) NOT NULL
+  profile_image_url TEXT NOT NULL
 );
