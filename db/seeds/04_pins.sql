@@ -39,7 +39,7 @@ INSERT INTO pins (creator_id, map_id, latitude, longitude, title, image_url)
 VALUES (2, 4, 31.15307, -87.9838986, 'Dauphin Island East End Public Beach', 'https://lh5.googleusercontent.com/p/AF1QipPY_wWIqF53I8VJ8DVWlin7GLybybQ7U3k1kf_l=w408-h306-k-no');
 
 
--- CREATED BY FOREST
+-- CREATED BY JOEY
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
 VALUES (3, 1, 40.582258, -74.154092, 'Dentist Man', 'Making malicious filings', 'https://lh5.googleusercontent.com/p/AF1QipN3Z56WCxEYeNZ3bkaPr4NGx2mXMNrr1VdJt-at=w426-h240-k-no');
 
