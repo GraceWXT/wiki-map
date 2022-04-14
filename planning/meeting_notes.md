@@ -52,8 +52,8 @@ Project completion: 60% (edited)
 - [X] Load pin markers in map view (group)
 - [X] Set initial zoom for map with pins (group)
 - [X] 'New pin' function upon map click (group)
-- [ ] Load pin marker details on pin click (group)
-- [ ] 
+- [X] 'Mouseover' pin to show details (group)
+- [ ] 'Click' pin to edit/delete details
 - [ ] 
 
 # Stretch
@@ -64,7 +64,7 @@ Project completion: 60% (edited)
 - [ ] experiment with other color palettes
 - [ ] match all pages min width/height
 - [ ] pin padding edge cases
-- [ ] 
+- [ ] ElephantSQL
 - [ ] 
 
 

@@ -186,6 +186,23 @@ const insertPinByMapID = (db, userID, mapID, lat, lng, title, desc, img) => {
     });
 };
 
+const updatePinByID= (db, pinId, title, desc, img) => {
+  return db.query(`
+  UPDATE pins
+  SET title = $1, description = $2, image_url = $3
+  WHERE id = $4
+  RETURNING *;
+  `, [title, desc, img, pinId])
+    .then((res) => {
+      const updatedPin = res.rows[0];
+      console.log("pin updated", updatedPin);
+      return updatedPin;
+    })
+    .catch((err) => {
+      console.log("insertPinByMapID error:", err.message);
+    });
+};
+
 /** a function to create new fav given a user id and map id */
 const insertFav = (db, mapID, userID) => {
   return db.query(`
@@ -250,6 +267,7 @@ const getBoundsByMapID = (db, mapId) => {
 }
 
 module.exports = {
+  updatePinByID,
   getMapByID,
   getPinTitlesByMapID,
   getPinsByUserID,
