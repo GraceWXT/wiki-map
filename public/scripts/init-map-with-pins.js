@@ -3,14 +3,16 @@
  * and on marker right click show popup of the edit/delete pin interface
  */
 const renderPinsInMap = (pins, map) => {
-  // get the map id from address bar for post req
+  // get the map id from address bar for sending req
   const mapId = window.location.href.split("/").pop();
-  //
+  // loop over the array to add marker and event listener for each pin
   for (const pin of pins) {
+    // Add the marker to the correct geolocation
     const lat = Number(pin.latitude);
     const lng = Number(pin.longitude);
     let marker = L.marker([lat, lng])
       .addTo(map)
+      //binds a popup to the marker that shows up on click and resets on popup close
       .bindPopup(`
         <h3>${pin.title}</h3>
         ${pin.description? `<p>${pin.description}</p>` : ''}
@@ -19,6 +21,14 @@ const renderPinsInMap = (pins, map) => {
       .on('click', function() {
         this.openPopup();
       })
+      .on("popupclose", function() {
+        this.getPopup().setContent(`
+        <h3>${pin.title}</h3>
+        ${pin.description? `<p>${pin.description}</p>` : ''}
+        ${pin.image_url? `<img src='${pin.image_url}'>` : ''}
+      `)
+      })
+      //a event listener that changes the popup content to edit/delete mode on rightclick
       .on('contextmenu', function() {
         this.getPopup().setContent(`
         <form action="/maps/${mapId}/${pin.id}/update" method="POST">
@@ -32,13 +42,7 @@ const renderPinsInMap = (pins, map) => {
         </form>
         `).openOn(map)
       })
-      .on("popupclose", function() {
-        this.getPopup().setContent(`
-        <h3>${pin.title}</h3>
-        ${pin.description? `<p>${pin.description}</p>` : ''}
-        ${pin.image_url? `<img src='${pin.image_url}'>` : ''}
-      `)
-      });
+      ;
 
   }
 };
@@ -48,22 +52,23 @@ const renderPinsInMap = (pins, map) => {
  * and registers a event listener that shows the create pin interface when map is clicked
  */
 const initMapAndPins = function () {
-
+  // get map id from address bar for sending req
   const mapId = window.location.href.split("/").pop();
-
+  // sends a request to gets the pins info and bound info
   $.ajax(`/maps/${mapId}/pins`)
     .then((values) => {
       const pins = values[0];
       const bound = values[1];
       let map;
 
-      console.log("pins:",pins);
-      console.log("bound:",bound);
+      // console.log("pins:",pins);
+      // console.log("bound:",bound);
 
-      console.log("pins object keys length: ", Object.keys(pins).length)
       if (!Object.keys(pins).length) {
+        // set map to default view if there's no pin for this map id
         map = L.map('map-container').setView([20, 0], 1.5);
       } else {
+        // set map to fitbound view if bound is provided
         map = L.map('map-container').fitBounds([
           [bound.min_lat, bound.min_lng],
           [bound.max_lat, bound.max_lng]
@@ -99,7 +104,7 @@ const initMapAndPins = function () {
         `).openOn(map);
 
       })
-      //
+      // Render any pins if exist on the given map
       if(Object.keys(pins).length) {
         console.log("starting to load pins in");
         renderPinsInMap(pins, map);

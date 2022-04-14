@@ -1,10 +1,11 @@
-// requre express & setup router
+// require express & setup router
 const express = require('express');
 const router = express.Router();
 const { deletePinByID, updatePinByID, insertPinByMapID, getBoundsByMapID, getMapByID, getPinTitlesByMapID, getUserByID, getMapList, getFavsMapIDByUserID, insertMap, getPinsByMapID } = require('../db/queries');
 
 const mapsRouter = function(db) {
   // express router trims '/maps'
+
   // GET /maps Homepage
   router.get("/", (req,res) => {
     const id = Number.parseInt(req.cookies["user_id"]);
@@ -15,7 +16,6 @@ const mapsRouter = function(db) {
         res.render("index", { user });
       })
       .catch((err) => {
-        // catch error if any and console log
         console.log("get /maps Error", err.message);
       });
   });
@@ -31,12 +31,11 @@ const mapsRouter = function(db) {
         res.send(`/maps/${newMap.id}`); //
       })
       .catch((err) => {
-        // catch error if any and console log
         console.log("post /maps Error", err.message);
       });
   });
 
-  // Help front end get the data when needed
+  // Get available maps list for homepage rendering
   router.get("/maplist", (req, res) => {
     const userID = Number.parseInt(req.cookies["user_id"]);
 
@@ -50,7 +49,7 @@ const mapsRouter = function(db) {
     });
   })
 
-  // GET /maps/:id/pins  => send the pin info of a specific map
+  // GET /maps/:id/pins  => send the pin info of a specific map for rendering markers
   router.get("/:id/pins", (req, res) => {
    const mapID = Number.parseInt(req.params.id);
    const pinsPromise = getPinsByMapID(db, mapID);
@@ -60,7 +59,6 @@ const mapsRouter = function(db) {
        res.json(values);
      })
      .catch((err) => {
-       // catch error if any and console log
        console.log("get /maps/:id/pins Error", err.message);
      });
  });
@@ -76,11 +74,11 @@ const mapsRouter = function(db) {
        res.redirect(`/maps/${mapId}`);
      })
      .catch((err) => {
-       // catch error if any and console log
        console.log("post /:mapId/:pinId/pins (Update pin) Error", err.message);
      });
  });
- // POST /maps/:pinId//update  => edit an existing pin on a specific map
+
+ // POST /maps/:pinId//update  => update an existing pin on a specific map
  router.post("/:mapId/:pinId/update", (req, res) => {
   //  const userID = Number.parseInt(req.cookies["user_id"]);
    const mapId= Number.parseInt(req.params.mapId);
@@ -96,7 +94,6 @@ const mapsRouter = function(db) {
        res.redirect(`/maps/${mapId}`);
      })
      .catch((err) => {
-       // catch error if any and console log
        console.log("post /:mapId/:pinId/pins (Update pin) Error", err.message);
      });
  });
@@ -118,7 +115,6 @@ const mapsRouter = function(db) {
       res.redirect(`/maps/${mapID}`);
     })
     .catch((err) => {
-      // catch error if any and console log
       console.log("post /maps/:id/pins Error", err.message);
     });
 });
@@ -134,22 +130,31 @@ const mapsRouter = function(db) {
         res.json(values);
       })
       .catch((err) => {
-        // catch error if any and console log
         console.log("get /maps/:id/pinTitles Error", err.message);
       });
   });
 
   // GET /maps/:id  => loads a specific map
   router.get("/:id", (req, res) => {
-    const id = Number.parseInt(req.cookies["user_id"]);
-    getUserByID(db, id)
+    const userId = Number.parseInt(req.cookies["user_id"]);
+    const mapId = req.params.id;
+    if (isNaN(Number.parseInt(mapId))) {
+      res.send("Bad Request");
+    }
+    getMapByID(db, mapId).then((map) => {
+      if (!map) {
+        res.send("Bad Request");
+      }
+    }).catch((err)=> {
+      console.log("get /maps/:id Errored when trying to verify the map id exists:", err.message);
+    })
+    getUserByID(db, userId)
       .then((user) => {
         // console.log("user object:", user);
         res.render("map.ejs", { user });
       })
       .catch((err) => {
-        // catch error if any and console log
-        console.log("get /maps/:id Error", err.message);
+        console.log("get /maps/:id Errored when getUserByID: ", err.message);
       });
   });
 
