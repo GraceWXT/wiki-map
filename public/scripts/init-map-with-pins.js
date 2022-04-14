@@ -14,18 +14,21 @@ const renderPinsInMap = (pins, map) => {
       .addTo(map)
       //binds a popup to the marker that shows up on click and resets on popup close
       .bindPopup(`
-        <h3>${pin.title}</h3>
-        ${pin.description? `<p>${pin.description}</p>` : ''}
-        ${pin.image_url? `<img src='${pin.image_url}'>` : ''}
-      `)
+        <h3 class="pin-info">${pin.title}</h3>
+        ${pin.description? `<p class="pin-info">${pin.description}</p>` : ''}
+        ${pin.image_url? `<img class="pin-img" src='${pin.image_url}'>` : ''}
+      `, {
+        closeOnClick: false,
+        keepInView: true
+      })
       .on('click', function() {
         this.openPopup();
       })
       .on("popupclose", function() {
         this.getPopup().setContent(`
-        <h3>${pin.title}</h3>
-        ${pin.description? `<p>${pin.description}</p>` : ''}
-        ${pin.image_url? `<img src='${pin.image_url}'>` : ''}
+        <h3 class="pin-info">${pin.title}</h3>
+        ${pin.description? `<p class="pin-info">${pin.description}</p>` : ''}
+        ${pin.image_url? `<img class="pin-img" src='${pin.image_url}'>` : ''}
       `)
       })
       //a event listener that changes the popup content to edit/delete mode on rightclick
@@ -90,10 +93,13 @@ const initMapAndPins = function () {
     })
     .then(([pins, map]) => {
       // Event listner to show create pin interface when map is clicked
-      map.on("click", (event) => {
+      map.on("dblclick", (event) => {
         console.log("event.latlng", event.latlng);
         const { lat, lng } = event.latlng;
-        let popup = L.popup().setLatLng([lat, lng])
+        let popup = L.popup({
+          closeOnClick: false,
+          keepInView: true
+        }).setLatLng([lat, lng])
         .setContent(`
         <form action="/maps/${mapId}/${lat}/${lng}/pins" method="POST">
         <input placeholder="Title (Required)" name="title"></input>

@@ -53,7 +53,33 @@ Project completion: 60% (edited)
 - [X] Set initial zoom for map with pins (group)
 - [X] 'New pin' function upon map click (group)
 - [X] 'Mouseover' pin to show details (group)
-- [ ] 'Click' pin to edit/delete details
+- [X] 'Click' pin to edit/delete details
+- [ ] 
+
+# Stretch
+- [ ] list views align hearts
+- [ ] nav bar side margins
+- [ ] update characters for demo
+- [ ] partial update (frontend) during map like/unlike (homepage)
+- [ ] experiment with other color palettes
+- [ ] match all pages min width/height
+- [ ] pin padding edge cases
+- [ ] ElephantSQL
+- [ ] dblclick to add point
+
+
+## 2022-04-14 Notes
+* 1 day remaining
+
+# Core
+- [X] dblclick map to add point
+- [X] L-click pin to see info
+- [X] R-click pin to edit info
+- [ ] Presentation planning
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
 - [ ] 
 
 # Stretch
@@ -66,8 +92,10 @@ Project completion: 60% (edited)
 - [ ] pin padding edge cases
 - [ ] ElephantSQL
 - [ ] 
-
-
-
-
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ]
 
