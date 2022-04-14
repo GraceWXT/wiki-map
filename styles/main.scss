@@ -71,6 +71,29 @@ body {
       height: 85vh;
       width: 85vh;
 
+      input, textarea, button {
+        font-size: large;
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+      }
+
+      h3 {
+        margin-bottom: 0;
+      }
+
+      p {
+        font-size: 1.8rem;
+      }
+
+      input, textarea {
+        width: 12em;
+      }
+
+      .leaflet-popup-content, form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
 
     section {

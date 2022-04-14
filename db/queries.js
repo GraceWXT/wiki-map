@@ -6,7 +6,7 @@ const getUserByID = function(db, id) {
   WHERE id = ${id};
   `)
     .then((result) => {
-      console.log("user result", result.rows[0]);
+      // console.log("user result", result.rows[0]);
       const user = result.rows[0];
       return user;
     })
@@ -24,7 +24,7 @@ const getMapList = function(db) {
   ORDER BY id DESC;
   `)
     .then((result) => {
-      console.log(result.rows);
+      // console.log(result.rows);
       const mapList = result.rows;
       return mapList;
     })
@@ -203,6 +203,19 @@ const updatePinByID= (db, pinId, title, desc, img) => {
     });
 };
 
+const deletePinByID= (db, pinId) => {
+  return db.query(`
+  DELETE FROM pins
+  WHERE id = $1
+  `, [pinId])
+    .then(() => {
+      console.log("pin deleted", pinId);
+    })
+    .catch((err) => {
+      console.log("deletePinByID error:", err.message);
+    });
+};
+
 /** a function to create new fav given a user id and map id */
 const insertFav = (db, mapID, userID) => {
   return db.query(`
@@ -282,5 +295,6 @@ module.exports = {
   deleteFav,
   getFavsByUserID,
   getMapListByUserID,
-  getBoundsByMapID
+  getBoundsByMapID,
+  deletePinByID
 };

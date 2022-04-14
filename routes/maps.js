@@ -1,7 +1,7 @@
 // requre express & setup router
 const express = require('express');
 const router = express.Router();
-const { updatePinByID, insertPinByMapID, getBoundsByMapID, getMapByID, getPinTitlesByMapID, getUserByID, getMapList, getFavsMapIDByUserID, insertMap, getPinsByMapID } = require('../db/queries');
+const { deletePinByID, updatePinByID, insertPinByMapID, getBoundsByMapID, getMapByID, getPinTitlesByMapID, getUserByID, getMapList, getFavsMapIDByUserID, insertMap, getPinsByMapID } = require('../db/queries');
 
 const mapsRouter = function(db) {
   // express router trims '/maps'
@@ -65,6 +65,42 @@ const mapsRouter = function(db) {
      });
  });
 
+
+ // POST /maps/:pinId//delete  => delete an existing pin on a specific map
+ router.post("/:mapId/:pinId/delete", (req, res) => {
+  //  const userID = Number.parseInt(req.cookies["user_id"]);
+   const mapId= Number.parseInt(req.params.mapId);
+   const pinId= Number.parseInt(req.params.pinId);
+   deletePinByID(db, pinId)
+    .then(()=> {
+       res.redirect(`/maps/${mapId}`);
+     })
+     .catch((err) => {
+       // catch error if any and console log
+       console.log("post /:mapId/:pinId/pins (Update pin) Error", err.message);
+     });
+ });
+ // POST /maps/:pinId//update  => edit an existing pin on a specific map
+ router.post("/:mapId/:pinId/update", (req, res) => {
+  //  const userID = Number.parseInt(req.cookies["user_id"]);
+   const mapId= Number.parseInt(req.params.mapId);
+   const pinId= Number.parseInt(req.params.pinId);
+   let { title, desc, img } = req.body;
+   if (!title) {
+     res.send("Bad Request")
+   }
+   if (!desc) {desc = null;}
+   if (!img) {img = null;}
+   updatePinByID(db, pinId, title, desc, img)
+    .then(()=> {
+       res.redirect(`/maps/${mapId}`);
+     })
+     .catch((err) => {
+       // catch error if any and console log
+       console.log("post /:mapId/:pinId/pins (Update pin) Error", err.message);
+     });
+ });
+
  // POST /maps/:id/pins  => create a new pin on a specific map
  router.post("/:id/:lat/:lng/pins", (req, res) => {
   const userID = Number.parseInt(req.cookies["user_id"]);
@@ -88,26 +124,6 @@ const mapsRouter = function(db) {
 });
 
 
-// POST /maps/:pinId//updatePins  => edit an existing pin on a specific map
-router.post("/:mapId/:pinId/update", (req, res) => {
-  const userID = Number.parseInt(req.cookies["user_id"]);
-  const { mapId, pinId } = Number.parseInt(req.params);
-  let { title, desc, img } = req.body;
-  if (!title) {
-    res.send("Bad Request")
-  }
-  if (!desc) {desc = null;}
-  if (!img) {img = null;}
-  updatePinByID(db, pinId, title, desc, img)
-   .then(()=> {
-      res.redirect(`/maps/${mapId}`);
-    })
-    .catch((err) => {
-      // catch error if any and console log
-      console.log("post /:mapId/:pinId/pins (Update pin) Error", err.message);
-    });
-});
-
   // GET /maps/:id/pins  => send the pin title and map name of a specific map
   router.get("/:id/pinTitles", (req, res) => {
     const mapID = Number.parseInt(req.params.id);
@@ -128,7 +144,7 @@ router.post("/:mapId/:pinId/update", (req, res) => {
     const id = Number.parseInt(req.cookies["user_id"]);
     getUserByID(db, id)
       .then((user) => {
-        console.log("user object:", user);
+        // console.log("user object:", user);
         res.render("map.ejs", { user });
       })
       .catch((err) => {
