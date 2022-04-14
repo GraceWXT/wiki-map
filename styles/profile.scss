@@ -37,6 +37,26 @@ body {
         margin-right: 1rem;
       }
     }
+
+    #new-map > form {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background: $new-map;
+
+      & > * {
+        margin: 1rem;
+      }
+
+      input {
+        width: 25vw;
+      }
+
+      button {
+        background-color: $submit;
+      }
+    }
   }
 
 

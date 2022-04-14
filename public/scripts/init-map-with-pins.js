@@ -42,24 +42,7 @@ const createMarker = (userId, pin, map) => {
   let marker = L.marker([lat, lng])
   .addTo(map)
 
-  // //binds a popup to the marker that shows up on click and resets on popup close
-  // .bindPopup(`
-  //   <h3 class="pin-info">${pin.title}</h3>
-  //   ${pin.description? `<p class="pin-info">${pin.description}</p>` : ''}
-  //   ${pin.image_url? `<img class="pin-img" src='${pin.image_url}'>` : ''}
-  // `, {
-  //   closeOnClick: false,
-  //   keepInView: true
-  // })
-  // .on("popupclose", function() {
-  //   this.getPopup().setContent(`
-  //   <h3 class="pin-info">${pin.title}</h3>
-  //   ${pin.description? `<p class="pin-info">${pin.description}</p>` : ''}
-  //   ${pin.image_url? `<img class="pin-img" src='${pin.image_url}'>` : ''}
-  // `)
-  // })
-
-  if (userId === pin.creator_id) {
+    if (userId === pin.creator_id) {
     console.log(`this is pin ID: ${pin.id}, creator ID: ${pin.creator_id}`);
     //a event listener that changes the popup content to edit/delete mode on rightclick
     marker.bindPopup(`
