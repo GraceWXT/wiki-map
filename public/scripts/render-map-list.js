@@ -10,7 +10,7 @@ const createMapListItem = function(map, favList) {
 
   const $button = $("<button>").attr("type", "submit").addClass("fav-button").append($favIcon);
   const $form = $("<form>").attr("action", `/favs/${map.id}`).attr("method", "POST").append($button);
-  const $listItem = $("<li>").append(`<a href="/maps/${map.id}">${map.name}</a>`).append($form);
+  const $listItem = $("<li>").append(`<a href="/maps/${map.id}">${map.map_name}</a><span>by ${map.owner_name}</span>`).append($form);
 
   // console.log("maplistItem inside create function", $listItem);
   return $listItem;

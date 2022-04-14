@@ -81,6 +81,10 @@ body {
         resize: none;
       }
 
+      footer {
+        margin-top: 0.5em;
+      }
+
       // .pin-img {
       //   width: 12em;
       //   height: 12em;
@@ -151,6 +155,8 @@ body {
 
           span {
             line-height: 2em;
+            margin-left: 0;
+            margin-right: 0;
           }
 
           & > * {

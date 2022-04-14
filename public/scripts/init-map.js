@@ -1,7 +1,9 @@
 $(() => {
   console.log("starting to init map");
 
-  let map = L.map('map-container').setView([20, 0], 1.5);
+  let map = L.map('map-container', {
+    doubleClickZoom: false
+  }).setView([20, 0], 1.5);
   if (map) console.log("map exist");
 
   L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {

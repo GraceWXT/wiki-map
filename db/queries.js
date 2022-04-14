@@ -19,9 +19,10 @@ const getUserByID = function(db, id) {
 /** A function that returns an array of maps object with its id and name */
 const getMapList = function(db) {
   return db.query(`
-  SELECT id, name
+  SELECT maps.id, maps.name AS map_name, users.name AS owner_name
   FROM maps
-  ORDER BY id DESC;
+  JOIN users ON users.id = owner_id
+  ORDER BY maps.id DESC;
   `)
     .then((result) => {
       // console.log(result.rows);
@@ -256,7 +257,7 @@ const getPinsByMapID = (db, mapId) => {
   `)
     .then((res) => {
       const pins = res.rows;
-      console.log( `Pins for map ID: ${mapId}`, pins);
+      // console.log( `Pins for map ID: ${mapId}`, pins);
       return pins;
     })
     .catch((err) => {
