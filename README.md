@@ -1,6 +1,9 @@
 # Wiki Map
 
-A full stack web app built to connect friends who want to create and share maps. The app uses the open-source Leaflet[^1] Javascript library with Mapbox tile data to display a user-friendly map interface. This app was made as a midterm project for the Lighthouse Labs web development program by [Grace Wang](https://github.com/GraceWXT), [Josh Sparkes](https://github.com/Sparkes21) and [Iaan Johnston](https://github.com/double-slide).
+A full stack web app built to connect friends who want to create and share maps. 
+The app uses the open-source Leaflet[^leaflet] Javascript library with Mapbox[^mapbox] tile data to display a user-friendly map interface.
+
+This app was made as a midterm project for the Lighthouse Labs web development program by [Grace Wang](https://github.com/GraceWXT), [Josh Sparkes](https://github.com/Sparkes21) and [Iaan Johnston](https://github.com/double-slide).
 
 # Product Views
 
@@ -24,7 +27,7 @@ A full stack web app built to connect friends who want to create and share maps.
 2. Reboot the database (`npm run db:reset`)
 3. Run the development web server (`npm start`)
 4. Navigate to `localhost:8080/maps`
-5. Using DevTools, create a cookie `user_id` with a value of 1, 2, or 3--this will enable you to navigate the site as a logged-in user (in the current development state)[^2]
+5. Using DevTools, create a cookie `user_id` with a value of 1, 2, or 3--this will enable you to navigate the site as a logged-in user (in the current development state)[^devtools]
 
 ## Functionality
 - A user can create a map, and then save pins to that map
@@ -40,5 +43,6 @@ A full stack web app built to connect friends who want to create and share maps.
 - Improve responsive design for various screen sizes
 - Build-out error pages to provide more visual continuity
 
-[^1]: Refer to https://leafletjs.com/ 
-[^2]: Refer to https://developer.chrome.com/docs/devtools/
+[^leaflet]: Refer to https://leafletjs.com/ 
+[^mapbox]: https://www.mapbox.com/
+[^devtools]: Refer to https://developer.chrome.com/docs/devtools/
