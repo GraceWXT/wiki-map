@@ -25,10 +25,21 @@
 - mention user_id cookies set as 2 and 3
 - user A creates new map & new pin (desc and img optional)
 - user B views new map & new pin
+- 
 
 # Images for new map demo:
-https://github.com/GraceWXT/wiki-map/blob/main/public/images/hotdog1.jpeg?raw=true
 https://github.com/GraceWXT/wiki-map/blob/main/public/images/hotdog2.jpeg?raw=true
+
+
+
+
+
+
+
+
+
+
+https://github.com/GraceWXT/wiki-map/blob/main/public/images/hotdog1.jpeg?raw=true
 
 
 

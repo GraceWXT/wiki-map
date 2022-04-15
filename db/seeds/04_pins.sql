@@ -39,8 +39,8 @@ VALUES (3, 1, 40.582258, -74.154092, 'Splash-Down', 'Making malicious filings', 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
 VALUES (3, 1, 51.0370767, -114.0694424, 'Water-Slide Park', 'Saw the mysterious Cal-Gary doing some bad-guy stuff', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Naheed_Nenshi_cropped.jpg/1200px-Naheed_Nenshi_cropped.jpg');
 
-INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (3, 2, 40.744966, -73.9958511, 'Froth Cafe', 'Great place for bean juice', 'https://lh5.googleusercontent.com/p/AF1QipNX78qYq-134xeNLVk1AHDPyH8nrHn-w5jJanhe=w408-h287-k-no');
+INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description)
+VALUES (3, 2, 40.744966, -73.9958511, 'Froth Cafe', 'Great place for bean juice');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description)
 VALUES (3, 2, 40.7401538, -73.9877831, 'New York City Bagel', 'This spot is great!');
