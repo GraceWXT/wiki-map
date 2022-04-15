@@ -75,22 +75,18 @@ Project completion: 60% (edited)
 - [X] dblclick map to add point
 - [X] L-click pin to see info
 - [X] R-click pin to edit info
-- [ ] Presentation planning
-- [ ] add doubleClickZoom: false to map renders
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [X] Presentation planning
+- [X] add doubleClickZoom: false to map renders
 
 # Stretch
-- [ ] list views align hearts
-- [ ] nav bar side margins
-- [ ] update characters for demo
+- [X] list views align hearts (good at string end)
+- [X] nav bar side margins
+- [X] update characters for demo
+- [X] experiment with other color palettes
+- [X] match all pages min width/height
+- [X] pin padding edge cases
+- [ ] ~ElephantSQL~
 - [ ] partial update (frontend) during map like/unlike (homepage)
-- [ ] experiment with other color palettes
-- [ ] match all pages min width/height
-- [ ] pin padding edge cases
-- [ ] ElephantSQL
 - [ ] 
 - [ ] 
 - [ ] 

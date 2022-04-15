@@ -61,10 +61,10 @@ app.use("/users", usersRouter(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/", (req, res) => {
-  // res.send("Wrong route.");
-  res.render("profile");
-});
+// app.get("/", (req, res) => {
+//   // res.send("Wrong route.");
+//   res.redirect("maps");
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
