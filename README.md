@@ -1,6 +1,6 @@
 # Wiki Map
 
-A full stack web app built to connect friends who want to create and share maps and map points together--built using the open-source Leaflet[^leaflet] Javascript library and Mapbox[^mapbox] tile data to display an interactive and user-friendly map interface.
+A full stack web app made to connect friends who want to share map pin points--built using the open-source Leaflet[^leaflet] Javascript library and Mapbox[^mapbox] tile data to display an interactive and user-friendly map interface.
 
 This app was built as a midterm project for the Lighthouse Labs web development program by:
 * [Grace Wang](https://github.com/GraceWXT)
