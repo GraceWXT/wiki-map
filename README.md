@@ -1,9 +1,10 @@
 # Wiki Map
 
-A full stack web app built to connect friends who want to create and share maps. 
+A full stack web app built to connect friends who want to create and share maps and map points together.
+
 The app uses the open-source Leaflet[^leaflet] Javascript library with Mapbox[^mapbox] tile data to display a user-friendly map interface.
 
-This app was made as a midterm project for the Lighthouse Labs web development program by [Grace Wang](https://github.com/GraceWXT), [Josh Sparkes](https://github.com/Sparkes21) and [Iaan Johnston](https://github.com/double-slide).
+This app was built as a midterm project for the Lighthouse Labs web development program by [Grace Wang](https://github.com/GraceWXT), [Josh Sparkes](https://github.com/Sparkes21) and [Iaan Johnston](https://github.com/double-slide).
 
 # Product Views
 
@@ -44,5 +45,5 @@ This app was made as a midterm project for the Lighthouse Labs web development p
 - Build-out error pages to provide more visual continuity
 
 [^leaflet]: Refer to https://leafletjs.com/ 
-[^mapbox]: https://www.mapbox.com/
+[^mapbox]: Refer to https://www.mapbox.com/
 [^devtools]: Refer to https://developer.chrome.com/docs/devtools/
