@@ -1,6 +1,6 @@
 // function takes individual map objects and uses to create map list html
 const createMyMapListItem = function(map, favList) {
-  let $favIcon = $(`<i class="fa-solid fa-heart fav-icon"></i>`)
+  let $favIcon = $(`<i class="fa-solid fa-heart fav-icon" id="${map.id}"></i>`)
   for (const fav of favList) {
     if (fav.map_id === map.id) {
       $favIcon.addClass("liked");
@@ -8,9 +8,9 @@ const createMyMapListItem = function(map, favList) {
   }
   // console.log($favIcon.attr("class"));
 
-  const $button = $("<button>").attr("type", "submit").addClass("fav-button").append($favIcon);
-  const $form = $("<form>").attr("action", `/favs/${map.id}`).attr("method", "POST").append($button);
-  const $listItem = $("<li>").append(`<a href="/maps/${map.id}">${map.name}</a>`).append($form);
+  // const $button = $("<button>").attr("type", "submit").addClass("fav-button").append($favIcon);
+  // const $form = $("<form>").attr("action", `/favs/${map.id}`).attr("method", "POST").append($button);
+  const $listItem = $("<li>").append(`<a href="/maps/${map.id}">${map.name}</a>`).append($favIcon);
 
   console.log("myMapListItem inside create function", $listItem);
   return $listItem;
@@ -24,6 +24,22 @@ const renderMyMapList = function(mapList, favList) {
     console.log("maplistItem inside render function", $mapListItem);
     $("#created-maps-list .list-container").append($mapListItem);
   }
+
+  $(`.fav-icon`).on("click", function() {
+    // console.log("this is", this);
+    // console.log("event target", event.target);
+    // console.log(`POST to /favs/${map.id}`);
+    const mapId = $(this).attr("id");
+    const eventTarget = this;
+    $.ajax({
+      method: "POST",
+      url: `/favs/${mapId}`,
+    }).then(()=> {
+      $(eventTarget).toggleClass("liked");
+    }).catch((err => {
+      console.log(`ajax POST /favs/${mapId} error: `, err);
+    }))
+  })
 };
 
 const loadMyMapList = function() {
