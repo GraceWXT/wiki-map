@@ -1,16 +1,18 @@
 # Wiki Map
 
-A full stack web app built to connect friends who want to create and share maps and map points together.
+A full stack web app built to connect friends who want to create and share maps and map points together--built using the open-source Leaflet[^leaflet] Javascript library and Mapbox[^mapbox] tile data to display an interactive and user-friendly map interface.
 
-The app uses the open-source Leaflet[^leaflet] Javascript library with Mapbox[^mapbox] tile data to display a user-friendly map interface.
+This app was built as a midterm project for the Lighthouse Labs web development program by:
+* [Grace Wang](https://github.com/GraceWXT)
+* [Josh Sparkes](https://github.com/Sparkes21)
+* [Iaan Johnston](https://github.com/double-slide)
 
-This app was built as a midterm project for the Lighthouse Labs web development program by [Grace Wang](https://github.com/GraceWXT), [Josh Sparkes](https://github.com/Sparkes21) and [Iaan Johnston](https://github.com/double-slide).
-
-# Product Views
+## Product Views
 
 !["Homepage"](https://github.com/GraceWXT/wiki-map/blob/main/public/images/localhost_8080_maps%20(1).png?raw=true)
 !["Map view"](https://github.com/GraceWXT/wiki-map/blob/main/public/images/localhost_8080_maps_2.png?raw=true)
 !["Profile page"](https://github.com/GraceWXT/wiki-map/blob/main/public/images/localhost_8080_users_profile.png?raw=true)
+
 
 ## Dependencies
 
@@ -43,6 +45,13 @@ This app was built as a midterm project for the Lighthouse Labs web development 
 - Add cloud database support and hosting
 - Improve responsive design for various screen sizes
 - Build-out error pages to provide more visual continuity
+
+## Wireframes
+!["Wireframes"](https://github.com/GraceWXT/wiki-map/blob/main/public/images/wiki-map-wire-frame2.drawio.png?raw=true)
+
+## Entity Relationship Diagram (ERD)
+!["Entity Relationship Diagrams"](https://github.com/GraceWXT/wiki-map/blob/main/planning/wikimap_ERD.png?raw=true)
+
 
 [^leaflet]: Refer to https://leafletjs.com/ 
 [^mapbox]: Refer to https://www.mapbox.com/
