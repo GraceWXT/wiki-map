@@ -14,7 +14,7 @@ VALUES (1, 3, 30.2921629,-87.5881799, 'Alabama Point East', 'The best beach ever
 
 -- CREATED BY MONICA
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
-VALUES (2, 2, 40.7396097, -73.9855818, 'Central Perk', 'Totally a real place', '');
+VALUES (2, 2, 40.7396097, -73.9855818, 'Central Perk', 'Totally a real place', 'https://github.com/GraceWXT/wiki-map/blob/main/public/images/central-perk.jpeg?raw=true');
 
 INSERT INTO pins (creator_id, map_id, latitude, longitude, title, description, image_url)
 VALUES (2, 2, 40.7279278,-74.0031734, 'Banter NYC', 'A local cafe in Greenwich Village Cozy with a patio featuring elevated, health-conscious fare, plus espresso & select cocktails.', 'https://3.bp.blogspot.com/-VIN_ORaAnUs/WJ9DICYckHI/AAAAAAAAbn0/W3KG0DW77mU99Gm_NjBnBobvV4RoT6lmQCEw/s1600/Banter-NYC-Brunch-Sullivan-6.jpg');

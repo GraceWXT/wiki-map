@@ -63,7 +63,7 @@ body {
   .profile-info {
     display: flex;
     width: 100%;
-    height: 35rem;
+    height: 30vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -72,10 +72,11 @@ body {
 
     img {
     box-sizing: border-box;
-    width: 20rem;
-    height: 20rem;
+    width: 10rem;
+    height: 10rem;
     object-fit: cover;
-    margin: 10px;
+    margin-bottom: 0px;
+    margin-top: 20px;
     // background-position: bottom;
     border-radius: 50%;
     }
@@ -85,20 +86,21 @@ body {
   .profile-text {
     display: flex;
     flex-direction: column;
-    font-size: 42pt;
-    margin: 10px;
+    font-size: 2em;
+    margin: 6px;
   }
 
   .table-columns {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    height: 56vh;
 
     .info-column {
       min-width: 18em;
       width: 25%;
       max-width: 30em;
-      min-height: 25em;
+      // min-height: 18em;
       box-sizing: border-box;
       margin: 20px;
       height: auto;

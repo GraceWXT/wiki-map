@@ -113,7 +113,7 @@ const initMapAndPins = function () {
           [bound.min_lat, bound.min_lng],
           [bound.max_lat, bound.max_lng]
         ], {
-          padding: [10, 10]
+          padding: [50, 50]
         });
         if (map) console.log("fitBound map exist");
       }
