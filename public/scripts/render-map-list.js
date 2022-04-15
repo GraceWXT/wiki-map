@@ -6,11 +6,10 @@ const createMapListItem = function(map, favList) {
       $favIcon.addClass("liked");
     }
   }
-  // console.log($favIcon.attr("class"));
 
-  const $button = $("<button>").attr("type", "submit").addClass("fav-button").append($favIcon);
-  const $form = $("<form>").attr("action", `/favs/${map.id}`).attr("method", "POST").append($button);
-  const $listItem = $("<li>").append(`<a href="/maps/${map.id}">${map.map_name}</a><span>by ${map.owner_name}</span>`).append($form);
+  // const $button = $("<button>").attr("type", "submit").addClass("fav-button").append($favIcon);
+  // const $form = $("<form>").attr("action", `/favs/${map.id}`).attr("method", "POST").append($button);
+  const $listItem = $("<li>").append(`<a href="/maps/${map.id}">${map.map_name}</a><span>by ${map.owner_name}</span>`).append($favIcon);
 
   // console.log("maplistItem inside create function", $listItem);
   return $listItem;
@@ -18,12 +17,28 @@ const createMapListItem = function(map, favList) {
 
 // function takes 'maps' object and renders into html using 'create map list element' function
 const renderMapList = function(mapList, favList) {
-  console.log("does it get to render function?")
   for (const mapObj of mapList) {
     const $mapListItem = createMapListItem(mapObj, favList);
     // console.log("maplistItem inside render function", $mapListItem);
     $(".list-container").append($mapListItem);
   }
+  // Register a event listener for all the fav icons that on click toggles color and sends the POST req
+  $(`.fav-icon`).on("click", function() {
+    // console.log("this is", this);
+    // console.log("event target", event.target);
+    // console.log(`POST to /favs/${map.id}`);
+    const mapId = $(this).attr("id");
+    const eventTarget = this;
+    $.ajax({
+      method: "POST",
+      url: `/favs/${mapId}`,
+    }).then(()=> {
+      $(eventTarget).toggleClass("liked");
+    }).catch((err => {
+      console.log(`ajax POST /favs/${mapId} error: `, err);
+    }))
+  })
+
 };
 
 const loadMapList = function() {
