@@ -1,10 +1,10 @@
 const createMyFavListItem = function(map) {
-  let $favIcon = $(`<i class="fa-solid fa-heart fav-icon"></i>`).addClass("liked");
+  let $favIcon = $(`<i class="fa-solid fa-heart faved fav-icon" id="${map.map_id}"></i>`).addClass("liked");
   // console.log($favIcon.attr("class"));
 
-  const $button = $("<button>").attr("type", "submit").addClass("fav-button").append($favIcon);
-  const $form = $("<form>").attr("action", `/favs/${map.map_id}`).attr("method", "POST").append($button);
-  const $listItem = $("<li>").append(`<a href="/maps/${map.map_id}">${map.name}</a>`).append($form);
+  // const $button = $("<button>").attr("type", "submit").addClass("fav-button").append($favIcon);
+  // const $form = $("<form>").attr("action", `/favs/${map.map_id}`).attr("method", "POST").append($button);
+  const $listItem = $("<li>").append(`<a href="/maps/${map.map_id}">${map.name}</a>`).append($favIcon);
 
   console.log("myFavListItem inside create function", $listItem);
   return $listItem;
@@ -18,6 +18,22 @@ const renderFavList = function(favMaps) {
     console.log("favListItem inside render function", $favListItem);
     $("#favorited-maps-list .list-container").append($favListItem);
   }
+
+  $(`.faved.fav-icon`).on("click", function(event) {
+    console.log("this is", this);
+    console.log("event target", event.target);
+    // console.log(`POST to /favs/${map.id}`);
+    const mapId = $(this).attr("id");
+    $.ajax({
+      method: "POST",
+      url: `/favs/${mapId}`,
+    }).then(()=> {
+      favList();
+    }).catch((err => {
+      console.log(`ajax POST /favs/${mapId} error: `, err);
+    }))
+  })
+
 };
 
 const favList = function() {
@@ -37,4 +53,5 @@ const favList = function() {
 // use document.ready to wait for page to load before loading map list
 $(document).ready(function() {
   favList();
+
 });
